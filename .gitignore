@@ -1,0 +1,6 @@
+# Video binaries (hosted externally via Google Drive)
+*.mp4
+
+# OS / Temporary files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,2179 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Viewport settings optimized for mobile (prevents zoom on input focus) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dr. Abida Nadaf | Emotional Wellness & Relationships Coach</title>
+
+    <!-- Google Fonts: Fraunces (warm luxury editorial serif) & Plus Jakarta Sans (ultra-clean modern sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tone.js for optional soothing ambient audio chime -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+
+    <!-- Canvas Confetti for Celebration on Booking Request -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sanctuary: { 50: '#FCFAF7', 100: '#FAF7F2', 200: '#F5ECE3', 300: '#EBDCCE', 400: '#DEC6B3', 500: '#C9A992' },
+                        peachmist: { 50: '#FFF9F5', 100: '#FFF1E8', 200: '#FDE2D2', 300: '#F9C9B0', 400: '#F4A682', 500: '#E87D52' },
+                        roseblush: { 50: '#FDF7F7', 100: '#F9ECEE', 200: '#F3D7DC', 300: '#E7B4BE' },
+                        terracotta: { DEFAULT: '#BA5333', hover: '#9E3F22', soft: '#FAF1EC', glow: 'rgba(186, 83, 51, 0.12)' },
+                        charcoal: { 900: '#1C1614', 800: '#2D2320', 700: '#483B37', 600: '#64544F', 500: '#8A7670', 400: '#B09F9A' },
+                        sage: { light: '#EEF3EE', DEFAULT: '#627A62', dark: '#455945' }
+                    },
+                    fontFamily: {
+                        serif: ['"Fraunces"', 'Georgia', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', '-apple-system', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'subtle': '0 4px 20px -2px rgba(28, 22, 20, 0.04)',
+                        'card': '0 12px 32px -4px rgba(28, 22, 20, 0.06), 0 4px 12px -2px rgba(28, 22, 20, 0.03)',
+                        'floating': '0 20px 48px -8px rgba(186, 83, 51, 0.1), 0 8px 20px -4px rgba(28, 22, 20, 0.04)',
+                        'hover-card': '0 22px 45px -8px rgba(28, 22, 20, 0.09), 0 8px 16px -4px rgba(186, 83, 51, 0.08)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FAF7F2;
+            color: #1C1614;
+            selection-background-color: #FDE2D2;
+        }
+
+        /* Glassmorphism surfaces */
+        .glass-clean {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+        }
+
+        /* Simple, elegant scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #FAF7F2;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #EBDCCE;
+            border-radius: 999px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #BA5333;
+        }
+
+        /* Ambient subtle pulse */
+        @keyframes subtleBreath {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.08);
+                opacity: 1;
+            }
+        }
+
+        .breathe-pulse {
+            animation: subtleBreath 6s ease-in-out infinite;
+        }
+
+        /* Mobile optimization for inputs to prevent iOS zoom */
+        input,
+        select,
+        textarea {
+            font-size: 16px !important;
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased text-charcoal-800 bg-sanctuary-100">
+
+    <!-- Top Reading Progress Indicator -->
+    <div id="progress-bar"
+        class="fixed top-0 left-0 h-1 bg-gradient-to-r from-terracotta via-peachmist-400 to-sage z-50 w-0 transition-all duration-150">
+    </div>
+
+    <div class="bg-charcoal-900 text-sanctuary-200 text-[10px] sm:text-xs py-2 px-4 border-b border-charcoal-800">
+        <div
+            class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+            <div class="flex items-center gap-2">
+                <span class="inline-block w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span class="font-medium text-sanctuary-100">Mind Wellness Centre Incharge</span>
+                <span class="text-charcoal-500 hidden md:inline">•</span>
+                <span class="text-charcoal-400 hidden md:inline">Adesh Institute of Dental Sciences, Bathinda</span>
+            </div>
+            <div class="flex items-center gap-4 text-sanctuary-300 text-[11px]">
+                <span class="hidden sm:inline">Certified NLP Master</span>
+                <span class="text-terracotta font-semibold flex items-center gap-1.5">
+                    <i class="fas fa-globe text-[10px]"></i> EN • HI • MR • PA
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <header class="sticky top-0 z-40 px-3 sm:px-6 py-3 transition-all duration-300" id="main-header">
+        <div
+            class="max-w-7xl mx-auto glass-clean rounded-2xl sm:rounded-full px-4 sm:px-8 py-3.5 shadow-subtle flex items-center justify-between">
+            <!-- Brand Identity -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div
+                    class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-peachmist-100 border border-terracotta/20 flex items-center justify-center text-terracotta font-serif font-semibold text-base sm:text-lg group-hover:bg-terracotta group-hover:text-white transition-all shadow-sm">
+                    AN
+                </div>
+                <div>
+                    <span
+                        class="font-serif text-base sm:text-lg font-semibold text-charcoal-900 tracking-tight block leading-none group-hover:text-terracotta transition-colors">
+                        Dr. Abida Nadaf
+                    </span>
+                    <span
+                        class="text-[9px] sm:text-[10px] text-charcoal-500 uppercase tracking-wider font-medium block mt-1">
+                        Emotional Wellness Coach
+                    </span>
+                </div>
+            </a>
+
+            <!-- Intuitive Desktop Nav -->
+            <nav class="hidden lg:flex items-center gap-7 text-[13px] font-medium text-charcoal-600">
+                <a href="#about" class="hover:text-terracotta transition-colors">About</a>
+                <a href="#mentors" class="hover:text-terracotta transition-colors">Mentors</a>
+                <a href="#who-i-help" class="hover:text-terracotta transition-colors">Who I Help</a>
+                <a href="#outcomes" class="hover:text-terracotta transition-colors">Outcomes</a>
+                <a href="#pillars" class="hover:text-terracotta transition-colors">5 Pillars</a>
+                <a href="#programs" class="hover:text-terracotta transition-colors">Programs</a>
+                <a href="#testimonials" class="hover:text-terracotta transition-colors">Stories</a>
+            </nav>
+
+            <!-- Action CTAs -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button id="chime-btn"
+                    class="w-9 h-9 rounded-full bg-sanctuary-200/80 hover:bg-peachmist-100 text-charcoal-700 hover:text-terracotta hidden sm:flex items-center justify-center transition-colors text-xs"
+                    title="Play relaxing sound bowl chime">
+                    <i class="fas fa-bell"></i>
+                </button>
+                <button
+                    class="open-booking-modal-btn inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full bg-terracotta hover:bg-terracotta-hover text-white text-[11px] sm:text-xs font-semibold tracking-wide shadow-sm transition-all"
+                    data-program="General Clarity Call">
+                    <span>Book Call</span>
+                    <i class="fas fa-arrow-right text-[10px]"></i>
+                </button>
+                <button id="mobile-menu-btn"
+                    class="lg:hidden w-9 h-9 rounded-full bg-sanctuary-200 text-charcoal-700 flex items-center justify-center text-sm"
+                    aria-label="Toggle menu">
+                    <i class="fas fa-bars" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-menu"
+            class="hidden lg:hidden mt-2 max-w-7xl mx-auto glass-clean rounded-2xl p-5 shadow-card flex flex-col gap-3 border border-sanctuary-200 max-h-[75vh] overflow-y-auto">
+            <a href="#about"
+                class="mobile-nav-link text-sm font-medium text-charcoal-800 py-2 border-b border-sanctuary-200">About &
+                The Dentist-to-Coach Story</a>
+            <a href="#mentors"
+                class="mobile-nav-link text-sm font-medium text-charcoal-800 py-2 border-b border-sanctuary-200">A Word
+                from My Teachers & Mentors</a>
+            <a href="#who-i-help"
+                class="mobile-nav-link text-sm font-medium text-charcoal-800 py-2 border-b border-sanctuary-200">Who I
+                Help (Women, Couples, Students)</a>
+            <a href="#outcomes"
+                class="mobile-nav-link text-sm font-medium text-charcoal-800 py-2 border-b border-sanctuary-200">The 6
+                Concrete Outcomes</a>
+            <a href="#pillars"
+                class="mobile-nav-link text-sm font-medium text-charcoal-800 py-2 border-b border-sanctuary-200">The 5
+                Pillars of Wholeness</a>
+            <a href="#programs"
+                class="mobile-nav-link text-sm font-medium text-charcoal-800 py-2 border-b border-sanctuary-200">Coaching
+                Programs</a>
+            <a href="#testimonials" class="mobile-nav-link text-sm font-medium text-charcoal-800 py-2">Client
+                Testimonials & Videos</a>
+            <div class="pt-3 flex flex-col gap-3">
+                <button
+                    class="open-booking-modal-btn w-full py-3.5 text-center bg-terracotta text-white rounded-full text-xs font-semibold uppercase tracking-wider shadow-sm"
+                    data-program="General Clarity Call">
+                    Book a Clarity Call Now
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="pt-6 sm:pt-10 pb-16 px-4 sm:px-6 relative overflow-hidden">
+            <!-- Gentle background ambient aura -->
+            <div
+                class="absolute top-10 right-1/4 w-72 sm:w-96 h-72 sm:h-96 bg-peachmist-200/50 rounded-full blur-3xl -z-10 pointer-events-none breathe-pulse">
+            </div>
+            <div
+                class="absolute bottom-10 left-1/4 w-72 sm:w-96 h-72 sm:h-96 bg-roseblush-200/40 rounded-full blur-3xl -z-10 pointer-events-none">
+            </div>
+
+            <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 items-center">
+                <!-- Hero Left: Introduction & Persona Guide -->
+                <div class="lg:col-span-7 space-y-6 reveal order-2 lg:order-1">
+
+                    <div
+                        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-peachmist-100 border border-peachmist-300/80 text-terracotta text-[10px] sm:text-xs font-semibold">
+                        <span class="w-2 h-2 rounded-full bg-terracotta"></span>
+                        <span>Welcoming You to a Safe Sanctuary</span>
+                    </div>
+
+                    <h1
+                        class="font-serif text-4xl sm:text-5xl lg:text-6xl text-charcoal-900 font-normal leading-[1.12] tracking-tight">
+                        Put your <span class="italic font-normal text-terracotta">peace of mind</span> back in place.
+                    </h1>
+
+                    <p class="text-sm sm:text-lg text-charcoal-600 leading-relaxed font-light max-w-2xl">
+                        Hello there! I'm <strong class="text-charcoal-900 font-semibold">Dr. Abida Nadaf</strong>. As an
+                        Emotional Wellness & Relationships Coach, I help women, couples, and students build healthier
+                        relationships with themselves and others.
+                    </p>
+
+                    <!-- Interactive Persona Finder -->
+                    <div class="bg-white/85 rounded-2xl p-4 sm:p-6 border border-sanctuary-300/90 shadow-card">
+                        <span
+                            class="text-[10px] sm:text-xs uppercase font-bold tracking-wider text-charcoal-500 block mb-3">
+                            Tell me what brings you here today:
+                        </span>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 mb-4" id="persona-selector">
+                            <button
+                                class="persona-tab w-full py-2.5 px-3 rounded-xl border transition-all flex items-center justify-center gap-1.5 border-terracotta bg-terracotta text-white shadow-md hover:bg-terracotta-hover"
+                                data-persona="woman">
+                                <i class="fas fa-heart text-xs"></i>
+                                <span class="text-xs font-semibold">I'm a Woman</span>
+                            </button>
+                            <button
+                                class="persona-tab w-full py-2.5 px-3 rounded-xl border transition-all flex items-center justify-center gap-1.5 border-sanctuary-300 bg-sanctuary-50 text-charcoal-700 hover:bg-peachmist-100 hover:text-terracotta hover:border-peachmist-300"
+                                data-persona="couple">
+                                <i class="fas fa-people-arrows text-xs"></i>
+                                <span class="text-xs font-semibold">In a Relationship</span>
+                            </button>
+                            <button
+                                class="persona-tab w-full py-2.5 px-3 rounded-xl border transition-all flex items-center justify-center gap-1.5 border-sanctuary-300 bg-sanctuary-50 text-charcoal-700 hover:bg-peachmist-100 hover:text-terracotta hover:border-peachmist-300"
+                                data-persona="student">
+                                <i class="fas fa-graduation-cap text-xs"></i>
+                                <span class="text-xs font-semibold">I'm a Student</span>
+                            </button>
+                        </div>
+
+                        <div
+                            class="p-4 rounded-xl bg-peachmist-50 border border-peachmist-200 flex items-start gap-3.5">
+                            <div
+                                class="w-8 h-8 rounded-full bg-peachmist-200 text-terracotta flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fas fa-heart text-xs" id="persona-icon"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs sm:text-sm font-bold text-charcoal-900" id="persona-heading">For
+                                    Women Feeling Drained & Over-Giving</h4>
+                                <p class="text-[11px] sm:text-xs text-charcoal-600 mt-1 leading-relaxed"
+                                    id="persona-description">
+                                    Learn to say "NO" with love, dismantle chronic people-pleasing, and build loving
+                                    boundaries without drowning in guilt or fear of rejection.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-3 pt-2">
+                        <button
+                            class="open-booking-modal-btn w-full sm:w-auto px-7 py-3.5 rounded-full bg-terracotta hover:bg-terracotta-hover text-white text-xs uppercase tracking-wider font-semibold transition-all shadow-md flex justify-center items-center gap-2"
+                            data-program="General Clarity Call">
+                            <span>Book a 30-Min Clarity Call</span>
+                            <i class="fas fa-calendar-check text-xs"></i>
+                        </button>
+                        <a href="#programs"
+                            class="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white hover:bg-sanctuary-50 border border-sanctuary-300 text-charcoal-700 text-xs uppercase tracking-wider font-semibold transition-all flex justify-center items-center">
+                            View All Coaching Programs
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Right: Photo Portrait -->
+                <div class="lg:col-span-5 reveal order-1 lg:order-2">
+                    <div class="relative mx-auto max-w-sm sm:max-w-md">
+                        
+                        <!-- Floating Accent: Take A Breath (Balanced at Top-Left) -->
+                        <div
+                            class="absolute -top-3.5 -left-3 sm:-left-6 glass-clean px-4 py-2.5 rounded-2xl shadow-floating border border-white/90 flex items-center gap-3 z-20 breathe-pulse">
+                            <div
+                                class="w-8 h-8 rounded-full bg-peachmist-100 text-terracotta flex items-center justify-center shrink-0 shadow-inner">
+                                <i class="fas fa-feather-pointed text-xs"></i>
+                            </div>
+                            <div>
+                                <span class="text-[9px] font-bold uppercase tracking-wider text-terracotta block leading-tight">
+                                    Take A Breath
+                                </span>
+                                <span class="text-[11px] sm:text-xs text-charcoal-800 font-semibold leading-tight">
+                                    Your peace matters.
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Portrait Card Frame -->
+                        <div
+                            class="relative bg-white rounded-3xl p-3.5 sm:p-4 shadow-card border border-sanctuary-300/80 group">
+                            
+                            <!-- Image Frame -->
+                            <div class="relative aspect-[4/5] rounded-2xl overflow-hidden bg-sanctuary-100 shadow-inner">
+                                <img src="abida.png" alt="Dr. Abida Nadaf"
+                                    class="w-full h-full object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-[1.02]">
+
+                                <!-- Sleek Language Badge (Floating at Top-Right) -->
+                                <div
+                                    class="absolute top-3 right-3 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-full shadow-subtle border border-white/90 flex items-center gap-1.5 text-charcoal-700">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0"></span>
+                                    <i class="fas fa-globe text-[9px] text-terracotta"></i>
+                                    <span class="text-[10px] sm:text-[11px] font-semibold">EN • HI • MR • PA</span>
+                                </div>
+                            </div>
+
+                            <!-- Crisp Identity & Role Bar (Clean, High-Contrast Editorial Design Below Photo) -->
+                            <div class="pt-4 pb-1.5 px-1.5 flex items-center justify-between gap-3">
+                                <div class="flex items-center gap-3 min-w-0">
+                                    <div
+                                        class="w-10 h-10 rounded-2xl bg-peachmist-100 border border-terracotta/20 flex items-center justify-center text-terracotta font-serif font-bold text-sm shrink-0 shadow-inner">
+                                        AN
+                                    </div>
+                                    <div class="min-w-0">
+                                        <h3
+                                            class="font-serif text-sm sm:text-base font-bold text-charcoal-900 leading-tight truncate">
+                                            Dr. Abida Nadaf
+                                        </h3>
+                                        <p class="text-[11px] text-terracotta font-medium mt-0.5 truncate leading-tight">
+                                            Dentist • Certified NLP Master Coach
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="shrink-0">
+                                    <span
+                                        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-sanctuary-100 border border-sanctuary-200 text-charcoal-700 text-[10px] font-semibold tracking-wide">
+                                        <i class="fas fa-circle-check text-terracotta text-xs"></i>
+                                        <span>Certified</span>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 px-4 sm:px-6 bg-white border-y border-sanctuary-200">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid lg:grid-cols-12 gap-12 items-start">
+
+                    <div class="lg:col-span-8 space-y-8 reveal">
+                        <div
+                            class="inline-flex items-center gap-2 text-terracotta text-[10px] sm:text-xs uppercase tracking-widest font-semibold">
+                            <i class="fas fa-feather"></i>
+                            <span>My Story & Why I Became a Coach</span>
+                        </div>
+
+                        <h2 class="font-serif text-3xl sm:text-4xl text-charcoal-900 font-normal leading-tight">
+                            From Healing Myself to <span class="italic text-terracotta">Helping Others Find Their
+                                Way</span>
+                        </h2>
+
+                        <div class="space-y-5 text-sm sm:text-base text-charcoal-700 leading-relaxed font-light">
+                            <p class="font-medium text-charcoal-900">
+                                <strong>For the longest time, I believed that if you love people sincerely, they will
+                                    love you back.</strong>
+                            </p>
+                            <p>
+                                I was an obedient, sincere girl who genuinely wanted to be there for everyone. I
+                                believed in helping, adjusting, giving, and keeping people happy. But somewhere along
+                                the way, I became an <strong>over-giver, over-responsible and a people-pleaser</strong>
+                                — and I didn't even realise it. I was so busy taking care of everyone else that I slowly
+                                stopped taking care of myself.
+                            </p>
+
+                            <h3 class="font-serif text-xl sm:text-2xl text-charcoal-900 font-medium mt-8">The years when
+                                I lost myself:</h3>
+                            <p>
+                                During my graduation years, I went through a difficult phase. I struggled with
+                                Depression and OCD, but at that time, I didn't understand why I wasn't happy even when I
+                                was constantly helping the people around me. I kept wondering...
+                            </p>
+                            <blockquote
+                                class="p-4 rounded-2xl bg-sanctuary-100 border-l-4 border-terracotta text-charcoal-800 text-sm italic font-serif leading-snug">
+                                "I am doing so much for everyone. Then why don't I feel happy?"
+                            </blockquote>
+                            <p>
+                                The answer came much later. I had stopped prioritising myself. I had stopped taking
+                                responsibility for my own emotional well-being. And that was only the beginning of a
+                                journey that would take me through some of the most challenging — and transformative —
+                                years of my life.
+                            </p>
+                            <p>
+                                After becoming a mother, I was overweight, struggling in my marriage and feeling lost
+                                about my career. And then came one moment that I can never forget....
+                            </p>
+                            <p>
+                                I was just 30 years old. My son was around one and a half years old, and one day,
+                                because of severe back pain, <strong>I couldn't even lift him.</strong> I looked at
+                                myself and asked:
+                            </p>
+                            <ul class="list-disc pl-6 space-y-2 italic text-charcoal-800">
+                                <li>"Do I want to live like this?"</li>
+                                <li>"Do I want my son to see his mother as someone who is always helpless and
+                                    complaining?"</li>
+                                <li>"Do I want to continue living with this kind of health, this kind of emotional
+                                    exhaustion and this kind of life?"</li>
+                            </ul>
+                            <p class="font-bold text-terracotta text-lg mt-4">Something inside me screamed... NO.</p>
+                            <p>And that "NO" became the beginning of my transformation.</p>
+
+                            <h3 class="font-serif text-xl sm:text-2xl text-charcoal-900 font-medium mt-8">I decided to
+                                take my life back.</h3>
+                            <p>
+                                I started counselling and began looking within. Instead of constantly asking, <em>"Why
+                                    are people doing this to me?"</em>, I started asking myself: <strong>"What is
+                                    happening inside me?"</strong>
+                            </p>
+                            <p>
+                                I began understanding my emotional patterns, working through my unhealed wounds and
+                                taking responsibility for my own healing. Slowly, I started changing — from the inside
+                                out. I worked on my physical health and reduced my weight. I began taking care of my
+                                mental and emotional well-being. I explored personal growth and attended several
+                                transformational programs.
+                            </p>
+                            <p>
+                                One program, <em>"You can Heal Your Life,"</em> created particularly a powerful shift in
+                                my mindset. For the first time, I truly understood how powerful — and sometimes
+                                miraculous — Healing can be. And gradually, I began to realise something beautiful.
+                                <strong>Perhaps everything I had gone through was preparing me to help someone
+                                    else.</strong>
+                            </p>
+
+                            <h3 class="font-serif text-xl sm:text-2xl text-charcoal-900 font-medium mt-8">From healing
+                                myself to helping others:</h3>
+                            <p>
+                                In August 2020, I took my first step as a Life Coach. And since then, there has been no
+                                looking back. I started working with people who were struggling with their emotions,
+                                self-image, relationships, communication and their relationship with themselves.
+                            </p>
+                            <p>
+                                What touched me the most was seeing how often people would say: <em>"I never looked at
+                                    it this way before."</em>
+                            </p>
+                            <p>
+                                The solutions were often simple. The difficult part was understanding what was really
+                                happening within. That became the Heart ❤️ of my work.
+                            </p>
+                            <p>
+                                In 2023, I completed my <strong>NLP Master's training</strong>, which added another
+                                powerful dimension to my understanding of the human mind, emotions and behaviour. Over
+                                the years, I have conducted programs and coaching sessions around <strong>Self-Love,
+                                    Peace of Mind, Emotional Wellness, Relationships, and People-Pleasing — including
+                                    how to say NO with Love.</strong> And every client, every conversation and every
+                                transformation has taught me something new.
+                            </p>
+
+                            <h3 class="font-serif text-xl sm:text-2xl text-charcoal-900 font-medium mt-8">From a Dentist
+                                to a Coach — a journey I never planned</h3>
+                            <p>
+                                I am a <strong>Dentist by education.</strong> Becoming a coach was not something I had
+                                planned at the beginning of my life. But today, I see how beautifully the pieces of my
+                                journey fit together.
+                            </p>
+                            <ul class="space-y-2 text-charcoal-800">
+                                <li><i class="fas fa-check text-terracotta mr-2"></i>My own struggles taught me
+                                    compassion.</li>
+                                <li><i class="fas fa-check text-terracotta mr-2"></i>My healing taught me courage.</li>
+                                <li><i class="fas fa-check text-terracotta mr-2"></i>My experiences taught me emotional
+                                    wisdom.</li>
+                            </ul>
+                            <p>
+                                And my journey taught me that <strong>you don't have to remain the person your
+                                    circumstances once made you.</strong>
+                            </p>
+                            <p>
+                                In 2026, another beautiful chapter unfolded when I was given the opportunity to be
+                                associated with and take charge of <strong>Walk in Clouds – The Mind Wellness
+                                    Centre</strong>, where I work with young students, faculty members, staff and
+                                others, creating a space for emotional wellness, self-awareness and mental well-being.
+                            </p>
+                            <p>
+                                Looking back, I realise that the woman who once felt lost was slowly being prepared for
+                                the work I do today. <em>And this is why I became a Coach.</em>
+                            </p>
+
+                            <h3 class="font-serif text-xl sm:text-2xl text-charcoal-900 font-medium mt-8">Finding Your
+                                Way Back</h3>
+                            <p>
+                                I don't believe that people need someone to "fix" them. I believe that sometimes, they
+                                simply need someone to help them <strong>pause, look within, understand themselves and
+                                    discover the strength that was already there.</strong>
+                            </p>
+                            <p>
+                                If my journey has taught me anything, it is this:
+                                <br><em>You can lose yourself while loving others.</em>
+                                <br><em>You can struggle and still find your way back.</em>
+                                <br><em>You can start again — even when you think it is too late.</em>
+                            </p>
+                            <p>
+                                I was once the woman who didn't know how to prioritise herself. Today, I help women
+                                understand that <strong>taking care of yourself is not selfish.</strong> It is
+                                necessary. And if you are somewhere in your own journey feeling lost, overwhelmed, stuck
+                                or disconnected from yourself, I want you to know one thing: <strong>If I could find my
+                                    way back to myself, so can you.</strong>
+                            </p>
+                            <p>
+                                This journey has been filled with challenges, learning, healing, faith and countless
+                                small moments of transformation. And today, I feel deeply grateful. Grateful for the
+                                woman I was. Grateful for the woman I became. And most of all, grateful for every person
+                                who allows me to be a small part of their journey.
+                            </p>
+                            <p class="font-medium text-charcoal-900 text-lg mt-6">
+                                <strong>This is my story.</strong>
+                                <br>And perhaps, in some little way, it can remind you that <strong>your story can
+                                    change too.</strong>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-4 space-y-4 sm:space-y-5 reveal sticky top-28">
+                        <span
+                            class="text-[10px] sm:text-xs uppercase tracking-wider font-bold text-charcoal-400 block mb-2">Credentials
+                            & Roles:</span>
+
+                        <div
+                            class="p-4 sm:p-5 rounded-2xl bg-sanctuary-50 border border-sanctuary-300 hover:border-peachmist-300 transition-all flex items-start gap-4 shadow-subtle">
+                            <div
+                                class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-peachmist-100 text-terracotta flex items-center justify-center text-base sm:text-lg shrink-0">
+                                <i class="fas fa-user-doctor"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xs sm:text-sm font-bold text-charcoal-900">Dentist by Education</h3>
+                                <p class="text-[11px] sm:text-xs text-charcoal-600 mt-1 leading-relaxed">
+                                    Bachelor of Dental Surgery (BDS) grounding in human anatomy, clinical diagnostic
+                                    rigor, and mind-body connections.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="p-4 sm:p-5 rounded-2xl bg-sanctuary-50 border border-sanctuary-300 hover:border-peachmist-300 transition-all flex items-start gap-4 shadow-subtle">
+                            <div
+                                class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-peachmist-100 text-terracotta flex items-center justify-center text-base sm:text-lg shrink-0">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xs sm:text-sm font-bold text-charcoal-900">Certified NLP Master
+                                    Practitioner</h3>
+                                <p class="text-[11px] sm:text-xs text-charcoal-600 mt-1 leading-relaxed">
+                                    Expertise in Neuro-Linguistic Programming to decode subconscious blind spots and
+                                    rewrite negative self-talk (2023).
+                                </p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="p-4 sm:p-5 rounded-2xl bg-sanctuary-50 border border-sanctuary-300 hover:border-peachmist-300 transition-all flex items-start gap-4 shadow-subtle">
+                            <div
+                                class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-peachmist-100 text-terracotta flex items-center justify-center text-base sm:text-lg shrink-0">
+                                <i class="fas fa-hospital"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xs sm:text-sm font-bold text-charcoal-900">Incharge, Mind Wellness
+                                    Centre</h3>
+                                <p class="text-[11px] sm:text-xs text-charcoal-600 mt-1 leading-relaxed">
+                                    Walk in Clouds – The Mind Wellness Centre, Adesh Institute of Dental Sciences &
+                                    Research, Bathinda Punjab (2026).
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-sanctuary-200 space-y-2.5">
+                            <a href="#mentors"
+                                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-peachmist-100 hover:bg-terracotta text-terracotta hover:text-white border border-terracotta/20 text-xs font-semibold tracking-wide shadow-subtle transition-all w-full justify-center">
+                                <i class="fas fa-quote-left text-[10px]"></i>
+                                <span>Words from Mentors</span>
+                            </a>
+                            <a href="#recognitions"
+                                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-charcoal-900 hover:bg-charcoal-800 text-white text-xs font-semibold tracking-wide shadow-md transition-all w-full justify-center">
+                                <span>View Recognitions</span>
+                                <i class="fas fa-arrow-down text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- A Word from My Teachers & Mentors Section -->
+                <div id="mentors" class="mt-20 pt-16 border-t border-sanctuary-200">
+                    <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16 reveal">
+                        <div
+                            class="inline-flex items-center gap-2 text-terracotta text-[10px] sm:text-xs uppercase tracking-widest font-semibold mb-2">
+                            <i class="fas fa-seedling"></i>
+                            <span>Guiding Lights & Inspiration</span>
+                        </div>
+                        <h2 class="font-serif text-3xl sm:text-4xl text-charcoal-900 font-normal">
+                            A Word from <span class="italic text-terracotta">My Teachers & Mentors</span>
+                        </h2>
+                        <p class="text-sm sm:text-base text-charcoal-600 font-light mt-3 max-w-2xl mx-auto">
+                            The mentors who witnessed my transformation, guided my growth, and shaped the compassionate,
+                            resilient coach I am today.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
+
+                        <!-- Teacher 1: Saif Ulla Khan -->
+                        <div
+                            class="bg-white rounded-3xl p-6 sm:p-7 border border-sanctuary-300 shadow-card hover:shadow-hover-card transition-all duration-300 flex flex-col justify-between reveal group">
+                            <div>
+                                <!-- Big Prominent Mentor Portrait -->
+                                <div
+                                    class="relative w-full h-64 sm:h-72 rounded-2xl overflow-hidden mb-6 bg-sanctuary-200 border border-sanctuary-300/80 shadow-subtle">
+                                    <img src="teacher 1.jpeg" alt="Saif Ulla Khan"
+                                        class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                                    <div
+                                        class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur text-terracotta flex items-center justify-center text-xs shadow-sm">
+                                        <i class="fas fa-quote-left"></i>
+                                    </div>
+                                    <div
+                                        class="absolute bottom-3 left-3 bg-charcoal-900/85 backdrop-blur-md text-white text-[10px] font-semibold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
+                                        NLP Master Trainer
+                                    </div>
+                                </div>
+
+                                <!-- Mentor Name & Role -->
+                                <div class="mb-4 pb-4 border-b border-sanctuary-200">
+                                    <h3
+                                        class="font-serif text-xl sm:text-2xl font-semibold text-charcoal-900 leading-snug group-hover:text-terracotta transition-colors">
+                                        Saif Ulla Khan
+                                    </h3>
+                                    <p class="text-xs text-terracotta font-medium mt-1 leading-relaxed">
+                                        Senior Corporate Trainer | Executive Coach | Leadership Consultant | NLP Master
+                                        Trainer
+                                    </p>
+                                </div>
+
+                                <!-- Testimonial Content -->
+                                <div
+                                    class="space-y-3.5 text-xs sm:text-[13px] text-charcoal-700 leading-relaxed font-light">
+                                    <p>
+                                        "As a trainer in my industry for over a decade, I have had the privilege of
+                                        meeting many talented individuals. Abida, however, was undoubtedly one of the
+                                        sharpest and most curious students I have taught. She possessed an exceptional
+                                        desire not merely to learn, but to deeply understand and master every module."
+                                    </p>
+                                    <p>
+                                        "What stood out most was that her passion was never externally driven. It did
+                                        not come from watching someone else make an impact; it grew from her own
+                                        journey; her struggles, challenges and the resilience she developed along the
+                                        way. She faced emotional difficulties, health challenges and social pressures,
+                                        yet handled them all with remarkable grace and refused to give up."
+                                    </p>
+                                    <p>
+                                        "Those experiences did not weaken her; they shaped her. They inspired her to
+                                        become the compassionate, resilient and deeply committed coach she is today."
+                                    </p>
+                                    <p class="font-medium text-charcoal-900 pt-1">
+                                        "Among the thousands of students I have trained, there are some I know I will
+                                        always remember. Abida will undoubtedly be one of them."
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div
+                                class="mt-6 pt-4 border-t border-sanctuary-200/70 flex items-center justify-between text-[11px] text-charcoal-500">
+                                <span class="flex items-center gap-1.5 font-medium text-terracotta">
+                                    <i class="fas fa-certificate text-[10px]"></i> NLP Master Trainer
+                                </span>
+                                <span>Teacher & Mentor</span>
+                            </div>
+                        </div>
+
+                        <!-- Teacher 2: Dr Mohinder Paul Sharma -->
+                        <div
+                            class="bg-white rounded-3xl p-6 sm:p-7 border border-sanctuary-300 shadow-card hover:shadow-hover-card transition-all duration-300 flex flex-col justify-between reveal group">
+                            <div>
+                                <!-- Big Prominent Mentor Portrait -->
+                                <div
+                                    class="relative w-full h-64 sm:h-72 rounded-2xl overflow-hidden mb-6 bg-sanctuary-200 border border-sanctuary-300/80 shadow-subtle">
+                                    <img src="teacher 2.jpeg" alt="Dr Mohinder Paul Sharma"
+                                        class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                                    <div
+                                        class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur text-terracotta flex items-center justify-center text-xs shadow-sm">
+                                        <i class="fas fa-quote-left"></i>
+                                    </div>
+                                    <div
+                                        class="absolute bottom-3 left-3 bg-charcoal-900/85 backdrop-blur-md text-white text-[10px] font-semibold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
+                                        Clinical Psychology
+                                    </div>
+                                </div>
+
+                                <!-- Mentor Name & Role -->
+                                <div class="mb-4 pb-4 border-b border-sanctuary-200">
+                                    <h3
+                                        class="font-serif text-xl sm:text-2xl font-semibold text-charcoal-900 leading-snug group-hover:text-terracotta transition-colors">
+                                        Dr. Mohinder Paul Sharma
+                                    </h3>
+                                    <p class="text-xs text-terracotta font-medium mt-1 leading-relaxed">
+                                        Clinical Psychologist
+                                    </p>
+                                </div>
+
+                                <!-- Testimonial Content -->
+                                <div
+                                    class="space-y-4 text-xs sm:text-[13px] text-charcoal-700 leading-relaxed font-light">
+                                    <blockquote
+                                        class="p-4 rounded-2xl bg-peachmist-100/80 border-l-3 border-terracotta text-charcoal-900 font-serif italic text-[13px] sm:text-sm leading-snug shadow-subtle">
+                                        “Courage is not the absence of fear; it is the decision to grow anyway. Dr.
+                                        Abida has done that—and now she helps others do the same. I am honored to have
+                                        witnessed her journey.”
+                                    </blockquote>
+
+                                    <p>
+                                        "Dear Dr., your empathy is rooted in your own healing, and your growth is not
+                                        finished. I am proud of the person you are becoming and the space you are
+                                        creating for others."
+                                    </p>
+
+                                    <div class="pt-3 border-t border-sanctuary-200/80 text-charcoal-800 text-xs">
+                                        <p class="font-medium text-charcoal-900">With warm regards,</p>
+                                        <p class="font-serif text-terracotta font-semibold mt-0.5">Dr. Mohinder Paul
+                                            Sharma</p>
+                                        <p class="text-[11px] text-charcoal-500">(Clinical Psychologist)</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                class="mt-6 pt-4 border-t border-sanctuary-200/70 flex items-center justify-between text-[11px] text-charcoal-500">
+                                <span class="flex items-center gap-1.5 font-medium text-terracotta">
+                                    <i class="fas fa-brain text-[10px]"></i> Clinical Psychology
+                                </span>
+                                <span>Teacher & Mentor</span>
+                            </div>
+                        </div>
+
+                        <!-- Teacher 3: Upcoming Placeholder -->
+                        <div
+                            class="bg-sanctuary-50/40 rounded-3xl p-6 sm:p-7 border-2 border-dashed border-sanctuary-300 hover:border-terracotta/40 transition-all duration-300 flex flex-col justify-between items-center text-center reveal md:col-span-2 lg:col-span-1">
+                            <div class="w-full flex flex-col items-center my-auto">
+                                <div
+                                    class="relative w-full h-64 sm:h-72 rounded-2xl overflow-hidden mb-6 bg-peachmist-100/70 border border-peachmist-200 flex flex-col items-center justify-center text-terracotta shadow-inner">
+                                    <div
+                                        class="w-20 h-20 rounded-2xl bg-white shadow-sm flex items-center justify-center text-3xl mb-3">
+                                        <i class="fas fa-user-graduate"></i>
+                                    </div>
+                                    <span
+                                        class="text-[10px] uppercase font-bold tracking-widest text-terracotta bg-peachmist-200/80 px-3 py-1 rounded-full">
+                                        Photo Coming Soon
+                                    </span>
+                                </div>
+
+                                <span
+                                    class="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-terracotta bg-peachmist-100 px-3 py-1 rounded-full mb-2">
+                                    Mentor & Guide
+                                </span>
+                                <h3 class="font-serif text-xl sm:text-2xl font-semibold text-charcoal-900 mb-2">
+                                    3rd Teacher & Mentor
+                                </h3>
+                                <p
+                                    class="text-xs sm:text-[13px] text-charcoal-500 max-w-xs leading-relaxed font-light mb-5">
+                                    Words of guidance and mentorship from Dr. Abida's 3rd valued mentor will be featured
+                                    here shortly.
+                                </p>
+                                <div
+                                    class="inline-flex items-center gap-1.5 text-xs text-terracotta font-medium px-3.5 py-1.5 rounded-full bg-peachmist-50 border border-peachmist-200">
+                                    <i class="fas fa-clock text-[10px]"></i>
+                                    <span>Details Coming Soon</span>
+                                </div>
+                            </div>
+
+                            <div class="w-full pt-4 border-t border-sanctuary-200/70 text-[11px] text-charcoal-400">
+                                <span>3rd Mentor Slot</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="recognitions" class="py-20 px-4 sm:px-6 bg-sanctuary-50 border-b border-sanctuary-200">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                    <div
+                        class="inline-flex items-center gap-2 text-terracotta text-[10px] sm:text-xs uppercase tracking-widest font-semibold mb-2">
+                        <i class="fas fa-award"></i>
+                        <span>Journey & Milestones</span>
+                    </div>
+                    <h2 class="font-serif text-3xl sm:text-4xl text-charcoal-900 font-normal">
+                        Recognitions (2023 - 2026)
+                    </h2>
+                </div>
+
+                <div class="space-y-20">
+                    
+                    <!-- 2023: NLP Master's Certification -->
+                    <div class="grid md:grid-cols-12 gap-8 lg:gap-12 items-center reveal">
+                        <div class="md:col-span-6 lg:col-span-5 order-2 md:order-1">
+                            <div class="relative rounded-3xl overflow-hidden shadow-card border border-emerald-200/80 bg-white group p-2.5">
+                                <a href="nlp.png" target="_blank" class="block overflow-hidden rounded-2xl relative">
+                                    <img src="nlp.png"
+                                        alt="NLP Master Practitioner Certificate - Dr. Abida Naseem Nadaf"
+                                        class="w-full h-auto object-contain rounded-2xl group-hover:scale-102 transition-transform duration-500">
+                                    <div class="absolute inset-0 bg-charcoal-900/10 group-hover:bg-transparent transition-colors"></div>
+                                    <div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-3 py-1 rounded-full shadow-subtle text-[10px] font-semibold text-emerald-800 border border-emerald-100 flex items-center gap-1.5">
+                                        <i class="fas fa-search-plus text-emerald-600"></i>
+                                        <span>Click to Zoom</span>
+                                    </div>
+                                </a>
+                                <div class="p-3 pb-1 flex items-center justify-between text-xs">
+                                    <span class="font-semibold text-charcoal-800 text-[11px]">CS-ABNLP #47239</span>
+                                    <span class="text-[10px] text-charcoal-500">Conscious Solutions & ABNLP</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:col-span-6 lg:col-span-7 order-1 md:order-2 space-y-4">
+                            <div class="flex items-center gap-3">
+                                <span class="text-terracotta font-serif text-4xl sm:text-5xl font-bold opacity-30">2023</span>
+                                <span class="text-[10px] uppercase font-bold tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">
+                                    Accredited Master Credential
+                                </span>
+                            </div>
+                            <h3 class="font-serif text-2xl sm:text-3xl text-charcoal-900 leading-snug">
+                                NLP Master Practitioner Certification
+                            </h3>
+                            <p class="text-sm text-charcoal-700 leading-relaxed font-light">
+                                Certified by <strong>Conscious Solutions</strong> on behalf of the <strong>American Board of NLP (ABNLP)</strong> and the <strong>International Society of NLP</strong>, under Master Trainer <strong>Dr. A. Doris Greenwood</strong> and NLP Trainer <strong>Saif Ullah Khan</strong>.
+                            </p>
+                            <p class="text-xs sm:text-[13px] text-charcoal-600 leading-relaxed font-light">
+                                Demonstrated mastery in advanced coaching interventions, conscious mind-state transformation, subconscious reframing, and emotional intelligence frameworks to help clients transcend limiting beliefs permanently.
+                            </p>
+                            <div class="pt-3 flex flex-wrap items-center gap-3">
+                                <a href="NLP masters certificate.pdf" target="_blank"
+                                    class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-terracotta hover:bg-terracotta-hover text-white text-xs font-semibold transition-all shadow-subtle">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <span>View Official Certificate (PDF)</span>
+                                </a>
+                                <a href="nlp.png" target="_blank"
+                                    class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-sanctuary-100 hover:bg-peachmist-100 text-charcoal-800 text-xs font-semibold border border-sanctuary-300 transition-colors">
+                                    <i class="fas fa-image"></i>
+                                    <span>High-Res View</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2025: HDFC Bank Appreciation -->
+                    <div class="grid md:grid-cols-12 gap-8 lg:gap-12 items-center reveal pt-10 border-t border-sanctuary-200">
+                        <div class="md:col-span-6 lg:col-span-7 space-y-4 md:pr-4">
+                            <div class="flex items-center gap-3">
+                                <span class="text-terracotta font-serif text-4xl sm:text-5xl font-bold opacity-30">2025</span>
+                                <span class="text-[10px] uppercase font-bold tracking-wider text-blue-700 bg-blue-50 border border-blue-200 px-3 py-1 rounded-full">
+                                    Corporate Leadership Recognition
+                                </span>
+                            </div>
+                            <h3 class="font-serif text-2xl sm:text-3xl text-charcoal-900 leading-snug">
+                                HDFC Bank Official Appreciation
+                            </h3>
+                            <p class="text-sm text-charcoal-700 leading-relaxed font-light">
+                                Formal Letter of Gratitude from <strong>HDFC Bank Limited (Human Resources Division, Mumbai)</strong>, signed by <strong>Geethaa George</strong>, Senior Executive Vice President – HR, for conducting 3 impactful corporate sessions for the Sales & Associate workforce.
+                            </p>
+                            <div class="p-4 rounded-2xl bg-white border border-sanctuary-300 shadow-subtle space-y-2">
+                                <span class="text-[10px] uppercase font-bold tracking-wider text-terracotta block">Key Workforce Feedback:</span>
+                                <ul class="text-xs text-charcoal-600 space-y-1.5 list-none font-light">
+                                    <li class="flex items-start gap-2">
+                                        <i class="fas fa-check text-sage text-[10px] mt-1 shrink-0"></i>
+                                        <span><em>"Session was very insightful. Could relate to real-life examples shared by Dr. Abida."</em></span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fas fa-check text-sage text-[10px] mt-1 shrink-0"></i>
+                                        <span><em>"Exceptional command over both English & Hindi with engaging, positive energy."</em></span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fas fa-check text-sage text-[10px] mt-1 shrink-0"></i>
+                                        <span><em>"Lucid topic explanation that directly benefits our mental health and team productivity."</em></span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="pt-2 flex flex-wrap items-center gap-3">
+                                <a href="hdfc cert.pdf" target="_blank"
+                                    class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-terracotta hover:bg-terracotta-hover text-white text-xs font-semibold transition-all shadow-subtle">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <span>View Appreciation Letter (PDF)</span>
+                                </a>
+                                <a href="hdfc.png" target="_blank"
+                                    class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-sanctuary-100 hover:bg-peachmist-100 text-charcoal-800 text-xs font-semibold border border-sanctuary-300 transition-colors">
+                                    <i class="fas fa-image"></i>
+                                    <span>View Letter Scan</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="md:col-span-6 lg:col-span-5">
+                            <div class="relative rounded-3xl overflow-hidden shadow-card border border-blue-200/80 bg-white group p-2.5">
+                                <a href="hdfc.png" target="_blank" class="block overflow-hidden rounded-2xl relative">
+                                    <img src="hdfc.png"
+                                        alt="HDFC Bank Appreciation Letter - Dr. Abida"
+                                        class="w-full h-auto object-contain rounded-2xl group-hover:scale-102 transition-transform duration-500">
+                                    <div class="absolute inset-0 bg-charcoal-900/10 group-hover:bg-transparent transition-colors"></div>
+                                    <div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-3 py-1 rounded-full shadow-subtle text-[10px] font-semibold text-blue-800 border border-blue-100 flex items-center gap-1.5">
+                                        <i class="fas fa-search-plus text-blue-600"></i>
+                                        <span>Click to Zoom</span>
+                                    </div>
+                                </a>
+                                <div class="p-3 pb-1 flex items-center justify-between text-xs">
+                                    <span class="font-semibold text-charcoal-800 text-[11px]">HDFC Bank Limited</span>
+                                    <span class="text-[10px] text-charcoal-500">HR Division • March 2025</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2026: Walk in Clouds – The Mind Wellness Centre -->
+                    <div class="grid md:grid-cols-12 gap-8 lg:gap-12 items-center reveal pt-10 border-t border-sanctuary-200">
+                        <div class="md:col-span-6 lg:col-span-6 order-2 md:order-1">
+                            <div class="grid grid-cols-2 gap-3 sm:gap-4">
+                                <div class="col-span-2 relative rounded-2xl overflow-hidden shadow-card border border-sanctuary-300 group aspect-[16/10]">
+                                    <img src="1wellcen.jpeg"
+                                        alt="Walk in Clouds Mind Wellness Centre - Main Facility"
+                                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                                    <span class="absolute bottom-3 left-3 bg-white/90 backdrop-blur text-charcoal-900 text-[10px] font-bold px-3 py-1 rounded-full shadow-sm">
+                                        Walk in Clouds • Wellness Centre
+                                    </span>
+                                </div>
+                                <div class="relative rounded-2xl overflow-hidden shadow-card border border-sanctuary-300 group aspect-video">
+                                    <img src="2wellcen.jpeg"
+                                        alt="Mind Wellness Centre Student Guidance Space"
+                                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                    <div class="absolute bottom-2 left-2 bg-charcoal-900/80 backdrop-blur text-white text-[9px] font-medium px-2 py-0.5 rounded-md">
+                                        Consultation Space
+                                    </div>
+                                </div>
+                                <div class="relative rounded-2xl overflow-hidden shadow-card border border-sanctuary-300 group aspect-video">
+                                    <img src="3wellcen.jpeg"
+                                        alt="Mind Wellness Centre Faculty & Student Interaction"
+                                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                    <div class="absolute bottom-2 left-2 bg-charcoal-900/80 backdrop-blur text-white text-[9px] font-medium px-2 py-0.5 rounded-md">
+                                        Mindful Sanctuary
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:col-span-6 lg:col-span-6 order-1 md:order-2 space-y-4 md:pl-4">
+                            <div class="flex items-center gap-3">
+                                <span class="text-terracotta font-serif text-4xl sm:text-5xl font-bold opacity-30">2026</span>
+                                <span class="text-[10px] uppercase font-bold tracking-wider text-sage bg-sage-light px-3 py-1 rounded-full border border-sage/30">
+                                    Current Leadership Appointment
+                                </span>
+                            </div>
+                            <h3 class="font-serif text-2xl sm:text-3xl text-charcoal-900 leading-snug">
+                                Walk in Clouds – The Mind Wellness Centre
+                            </h3>
+                            <p class="text-sm text-charcoal-700 leading-relaxed font-light">
+                                Incharge and lead coach at <strong>Walk in Clouds – The Mind Wellness Centre</strong>, Adesh Institute of Dental Sciences & Research, Bathinda, Punjab.
+                            </p>
+                            <p class="text-xs sm:text-[13px] text-charcoal-600 leading-relaxed font-light">
+                                Providing students, faculty members, and campus healthcare staff with a dedicated, compassionate space for emotional wellness, nervous system regulation, self-awareness, and mental hygiene.
+                            </p>
+                            <div class="pt-2 flex items-center gap-3 text-xs text-charcoal-600">
+                                <span class="inline-flex items-center gap-1.5 bg-sanctuary-100 px-3 py-1.5 rounded-xl border border-sanctuary-300">
+                                    <i class="fas fa-users text-terracotta"></i> Students & Healthcare Faculty
+                                </span>
+                                <span class="inline-flex items-center gap-1.5 bg-sanctuary-100 px-3 py-1.5 rounded-xl border border-sanctuary-300">
+                                    <i class="fas fa-heart text-terracotta"></i> Emotional Wellness
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Clay India International School -->
+                    <div class="grid md:grid-cols-12 gap-8 lg:gap-12 items-center reveal pt-10 border-t border-sanctuary-200">
+                        <div class="md:col-span-6 lg:col-span-6 space-y-4 md:pr-4">
+                            <div class="flex items-center gap-3">
+                                <span class="text-terracotta font-serif text-3xl sm:text-4xl font-bold opacity-30">Outreach</span>
+                                <span class="text-[10px] uppercase font-bold tracking-wider text-terracotta bg-peachmist-100 px-3 py-1 rounded-full">
+                                    Youth Empowerment Workshop
+                                </span>
+                            </div>
+                            <h3 class="font-serif text-2xl sm:text-3xl text-charcoal-900 leading-snug">
+                                Clay India International School
+                            </h3>
+                            <p class="text-sm text-charcoal-700 leading-relaxed font-light">
+                                Conducted interactive life coaching and emotional empowerment sessions for students at <strong>Clay India International School</strong>.
+                            </p>
+                            <p class="text-xs sm:text-[13px] text-charcoal-600 leading-relaxed font-light">
+                                Guided young students through practical exercises for mastering exam anxiety, understanding self-worth early in life, overcoming peer pressure, and building mindful everyday habits.
+                            </p>
+                            <div class="pt-2 flex flex-wrap items-center gap-3">
+                                <button class="video-card-trigger inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-terracotta hover:bg-terracotta-hover text-white text-xs font-semibold transition-all shadow-subtle"
+                                    data-drive="https://drive.google.com/file/d/165NMrkr-CTkP6n_4ejHYrNMpZm00Goeb/preview"
+                                    data-title="Clay India International School — Youth Session"
+                                    data-text="Dr. Abida Nadaf conducting an engaging interactive workshop on emotional health and mindful confidence for students at Clay India International School.">
+                                    <i class="fas fa-play"></i>
+                                    <span>Watch Session Video</span>
+                                </button>
+                                <a href="clay.jpeg" target="_blank"
+                                    class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-sanctuary-100 hover:bg-peachmist-100 text-charcoal-800 text-xs font-semibold border border-sanctuary-300 transition-colors">
+                                    <i class="fas fa-image"></i>
+                                    <span>View Event Photo</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="md:col-span-6 lg:col-span-6">
+                            <div class="relative rounded-3xl overflow-hidden shadow-card border border-sanctuary-300 group aspect-video cursor-pointer video-card-trigger"
+                                data-drive="https://drive.google.com/file/d/165NMrkr-CTkP6n_4ejHYrNMpZm00Goeb/preview"
+                                data-title="Clay India International School — Youth Session"
+                                data-text="Dr. Abida Nadaf conducting an engaging interactive workshop on emotional health and mindful confidence for students at Clay India International School.">
+                                <img src="clay.jpeg"
+                                    alt="Dr. Abida Nadaf at Clay India International School"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-black/25 group-hover:bg-black/35 transition-colors flex items-center justify-center">
+                                    <div class="w-14 h-14 rounded-full bg-terracotta text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-play text-base ml-1"></i>
+                                    </div>
+                                </div>
+                                <div class="absolute bottom-4 left-4 bg-charcoal-900/85 backdrop-blur px-3 py-1.5 rounded-xl text-white text-[11px] font-semibold flex items-center gap-2">
+                                    <i class="fas fa-video text-terracotta"></i>
+                                    <span>Clay India Session Highlights</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="who-i-help" class="py-20 px-4 sm:px-6 relative">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16 reveal">
+                    <div
+                        class="inline-flex items-center gap-2 text-terracotta text-[10px] sm:text-xs uppercase tracking-widest font-semibold mb-2">
+                        <i class="fas fa-users"></i>
+                        <span>Target Audience</span>
+                    </div>
+                    <h2 class="font-serif text-3xl sm:text-4xl text-charcoal-900 font-normal">
+                        Who Do I Help?
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6 sm:gap-8">
+                    <!-- Women -->
+                    <div
+                        class="bg-white rounded-3xl p-6 sm:p-8 border border-sanctuary-300 shadow-card transition-all duration-300 flex flex-col justify-between reveal">
+                        <div>
+                            <div
+                                class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-peachmist-100 text-terracotta flex items-center justify-center text-lg sm:text-xl mb-6">
+                                <i class="fas fa-person-dress"></i>
+                            </div>
+                            <span
+                                class="text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-terracotta bg-peachmist-100 px-3 py-1 rounded-full">For
+                                Women</span>
+                            <h3 class="font-serif text-xl sm:text-2xl font-normal text-charcoal-900 mt-3 mb-3">
+                                The Over-Giver & People-Pleaser
+                            </h3>
+                            <p class="text-[11px] sm:text-xs text-charcoal-600 leading-relaxed font-light mb-4">
+                                Women feeling guilty whenever they take time for themselves, and terrified that saying
+                                "NO" will make them seem unloving.
+                            </p>
+                        </div>
+                        <div class="pt-6">
+                            <!-- Correct mapping to pre-select Women's Coaching -->
+                            <button
+                                class="open-booking-modal-btn w-full text-[11px] sm:text-xs font-semibold text-terracotta hover:text-white hover:bg-terracotta border border-terracotta/20 flex items-center justify-center gap-1.5 py-2.5 rounded-xl transition-colors"
+                                data-program="Women's Coaching">
+                                <span>Explore Women's Coaching</span>
+                                <i class="fas fa-arrow-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Couples -->
+                    <div
+                        class="bg-white rounded-3xl p-6 sm:p-8 border-2 border-terracotta/40 shadow-card transition-all duration-300 flex flex-col justify-between relative reveal md:-translate-y-2">
+                        <div
+                            class="absolute -top-3 left-6 bg-terracotta text-white text-[8px] uppercase tracking-wider font-bold py-0.5 px-3 rounded-full">
+                            High Priority</div>
+                        <div>
+                            <div
+                                class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-terracotta/10 text-terracotta flex items-center justify-center text-lg sm:text-xl mb-6">
+                                <i class="fas fa-heart-circle-check"></i>
+                            </div>
+                            <span
+                                class="text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-terracotta bg-terracotta/10 px-3 py-1 rounded-full">Couples
+                                & Pre-Marital</span>
+                            <h3 class="font-serif text-xl sm:text-2xl font-normal text-charcoal-900 mt-3 mb-3">
+                                Partners in Repetitive Cycles
+                            </h3>
+                            <p class="text-[11px] sm:text-xs text-charcoal-600 leading-relaxed font-light mb-4">
+                                Couples exhausted by circular arguments, passive-aggressive silence, or women preparing
+                                for marriage facing identity shifts.
+                            </p>
+                        </div>
+                        <div class="pt-6">
+                            <!-- Correct mapping to pre-select Couple Coaching -->
+                            <button
+                                class="open-booking-modal-btn w-full text-[11px] sm:text-xs font-semibold bg-terracotta text-white hover:bg-terracotta-hover flex items-center justify-center gap-1.5 py-2.5 rounded-xl shadow-sm transition-colors"
+                                data-program="Couple Coaching">
+                                <span>Explore Couples Coaching</span>
+                                <i class="fas fa-arrow-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Students -->
+                    <div
+                        class="bg-white rounded-3xl p-6 sm:p-8 border border-sanctuary-300 shadow-card transition-all duration-300 flex flex-col justify-between reveal">
+                        <div>
+                            <div
+                                class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-sage-light text-sage flex items-center justify-center text-lg sm:text-xl mb-6">
+                                <i class="fas fa-book-open-reader"></i>
+                            </div>
+                            <span
+                                class="text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-sage bg-sage-light px-3 py-1 rounded-full">For
+                                Students</span>
+                            <h3 class="font-serif text-xl sm:text-2xl font-normal text-charcoal-900 mt-3 mb-3">
+                                Students & Young Minds
+                            </h3>
+                            <p class="text-[11px] sm:text-xs text-charcoal-600 leading-relaxed font-light mb-4">
+                                Students struggling under exam pressure, fear of failure, career confusion, and harsh
+                                self-criticism that freezes performance.
+                            </p>
+                        </div>
+                        <div class="pt-6">
+                            <!-- Correct mapping to pre-select Student Mentorship -->
+                            <button
+                                class="open-booking-modal-btn w-full text-[11px] sm:text-xs font-semibold text-terracotta hover:text-white hover:bg-terracotta border border-terracotta/20 flex items-center justify-center gap-1.5 py-2.5 rounded-xl transition-colors"
+                                data-program="Student Mentorship">
+                                <span>Explore Student Mentorship</span>
+                                <i class="fas fa-arrow-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="outcomes" class="py-20 px-4 sm:px-6 bg-peachmist-50/60 border-y border-sanctuary-200">
+            <div class="max-w-7xl mx-auto">
+                <div class="max-w-3xl mb-12 reveal">
+                    <div
+                        class="inline-flex items-center gap-2 text-terracotta text-[10px] uppercase tracking-widest font-semibold mb-2">
+                        <i class="fas fa-check-double"></i>
+                        <span>Measurable Impact</span>
+                    </div>
+                    <h2 class="font-serif text-3xl sm:text-4xl text-charcoal-900 font-normal">
+                        Through My Coaching Programs, I Help You:
+                    </h2>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                    <!-- Outcome Cards -->
+                    <div class="bg-white p-5 rounded-2xl border border-sanctuary-300 shadow-subtle reveal">
+                        <div class="flex justify-between mb-3"><span
+                                class="w-7 h-7 rounded-full bg-peachmist-100 text-terracotta font-serif font-bold text-xs flex items-center justify-center">01</span><i
+                                class="fas fa-eye text-charcoal-400"></i></div>
+                        <h4 class="text-xs sm:text-sm font-bold text-charcoal-900 mb-1">Identify Subconscious Blind
+                            Spots</h4>
+                        <p class="text-[11px] text-charcoal-600 leading-relaxed">Pinpoint hidden patterns that cause
+                            exhaustion.</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl border border-sanctuary-300 shadow-subtle reveal">
+                        <div class="flex justify-between mb-3"><span
+                                class="w-7 h-7 rounded-full bg-peachmist-100 text-terracotta font-serif font-bold text-xs flex items-center justify-center">02</span><i
+                                class="fas fa-brain text-charcoal-400"></i></div>
+                        <h4 class="text-xs sm:text-sm font-bold text-charcoal-900 mb-1">Overcome Negative Thoughts</h4>
+                        <p class="text-[11px] text-charcoal-600 leading-relaxed">Break repetitive spirals of self-doubt
+                            and emotional baggage.</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl border border-sanctuary-300 shadow-subtle reveal">
+                        <div class="flex justify-between mb-3"><span
+                                class="w-7 h-7 rounded-full bg-peachmist-100 text-terracotta font-serif font-bold text-xs flex items-center justify-center">03</span><i
+                                class="fas fa-link-slash text-charcoal-400"></i></div>
+                        <h4 class="text-xs sm:text-sm font-bold text-charcoal-900 mb-1">Break Unhealthy Patterns</h4>
+                        <p class="text-[11px] text-charcoal-600 leading-relaxed">Stop ending up in the exact same
+                            arguments or silent standoffs.</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl border border-sanctuary-300 shadow-subtle reveal">
+                        <div class="flex justify-between mb-3"><span
+                                class="w-7 h-7 rounded-full bg-peachmist-100 text-terracotta font-serif font-bold text-xs flex items-center justify-center">04</span><i
+                                class="fas fa-shield-heart text-charcoal-400"></i></div>
+                        <h4 class="text-xs sm:text-sm font-bold text-charcoal-900 mb-1">Create Loving Boundaries</h4>
+                        <p class="text-[11px] text-charcoal-600 leading-relaxed">Communicate your limits with tenderness
+                            and complete composure.</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl border border-sanctuary-300 shadow-subtle reveal">
+                        <div class="flex justify-between mb-3"><span
+                                class="w-7 h-7 rounded-full bg-peachmist-100 text-terracotta font-serif font-bold text-xs flex items-center justify-center">05</span><i
+                                class="fas fa-seedling text-charcoal-400"></i></div>
+                        <h4 class="text-xs sm:text-sm font-bold text-charcoal-900 mb-1">Build Self-Confidence</h4>
+                        <p class="text-[11px] text-charcoal-600 leading-relaxed">Stop looking outside yourself for
+                            approval and trust your intuition.</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl border border-sanctuary-300 shadow-subtle reveal">
+                        <div class="flex justify-between mb-3"><span
+                                class="w-7 h-7 rounded-full bg-peachmist-100 text-terracotta font-serif font-bold text-xs flex items-center justify-center">06</span><i
+                                class="fas fa-dove text-charcoal-400"></i></div>
+                        <h4 class="text-xs sm:text-sm font-bold text-charcoal-900 mb-1">Restore Peace of Mind</h4>
+                        <p class="text-[11px] text-charcoal-600 leading-relaxed">Cultivate an internal calm that remains
+                            steady, even in chaos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pillars" class="py-20 px-4 sm:px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid lg:grid-cols-12 gap-10 items-center">
+                    <div class="lg:col-span-5 space-y-4 reveal">
+                        <div
+                            class="inline-flex items-center gap-2 text-terracotta text-[10px] uppercase tracking-widest font-semibold">
+                            <i class="fas fa-layer-group"></i><span>The Transformation Architecture</span>
+                        </div>
+                        <h2 class="font-serif text-3xl sm:text-4xl text-charcoal-900 font-normal leading-tight">The 5
+                            Pillars Worked On</h2>
+                        <p class="text-xs sm:text-sm text-charcoal-600 font-light">Whether you embark on the 120-Day or
+                            180-Day mentorship, our work is anchored in these five fundamental areas.</p>
+                        <div class="p-4 rounded-2xl bg-peachmist-100/80 border border-peachmist-200 hidden sm:block">
+                            <span class="text-xs font-semibold text-charcoal-900 block mb-1">Click any pillar on the
+                                right:</span>
+                            <p class="text-xs text-charcoal-600 font-light" id="active-pillar-detail">Select a pillar to
+                                read how we strengthen that dimension.</p>
+                        </div>
+                    </div>
+                    <!-- Interactive Pillars -->
+                    <div class="lg:col-span-7 space-y-3 reveal" id="pillars-container">
+                        <div class="pillar-row active bg-white p-4 rounded-2xl border border-terracotta shadow-subtle cursor-pointer"
+                            data-desc="Master emotional regulation, somatic tension release, and decode the triggers of chronic resentment so you no longer feel held hostage by emotional waves.">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3"><span
+                                        class="w-6 h-6 rounded-lg bg-peachmist-100 text-terracotta text-[11px] font-bold flex items-center justify-center">1</span>
+                                    <h4 class="text-xs sm:text-sm font-bold text-charcoal-900">Emotions</h4>
+                                </div><i class="fas fa-chevron-right text-xs text-terracotta rotate-90"></i>
+                            </div>
+                            <p class="text-[11px] text-charcoal-600 mt-2 pillar-content">Master emotional regulation,
+                                somatic tension release, and decode the triggers of chronic resentment so you no longer
+                                feel held hostage by emotional waves.</p>
+                        </div>
+                        <div class="pillar-row bg-white p-4 rounded-2xl border border-sanctuary-300 shadow-subtle cursor-pointer"
+                            data-desc="Uncover subconscious blind spots, childhood defense scripts, and stories leading to self-sabotage.">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3"><span
+                                        class="w-6 h-6 rounded-lg bg-sanctuary-100 text-charcoal-600 text-[11px] font-bold flex items-center justify-center">2</span>
+                                    <h4 class="text-xs sm:text-sm font-bold text-charcoal-900">Self-Awareness</h4>
+                                </div><i class="fas fa-chevron-right text-xs text-charcoal-400"></i>
+                            </div>
+                            <p class="text-[11px] text-charcoal-600 mt-2 hidden pillar-content">Uncover subconscious
+                                blind spots, childhood defense scripts, and stories leading to self-sabotage.</p>
+                        </div>
+                        <div class="pillar-row bg-white p-4 rounded-2xl border border-sanctuary-300 shadow-subtle cursor-pointer"
+                            data-desc="Break cycles of codependency and establish emotional safety with partners and family.">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3"><span
+                                        class="w-6 h-6 rounded-lg bg-sanctuary-100 text-charcoal-600 text-[11px] font-bold flex items-center justify-center">3</span>
+                                    <h4 class="text-xs sm:text-sm font-bold text-charcoal-900">Relationships</h4>
+                                </div><i class="fas fa-chevron-right text-xs text-charcoal-400"></i>
+                            </div>
+                            <p class="text-[11px] text-charcoal-600 mt-2 hidden pillar-content">Break cycles of
+                                codependency and establish emotional safety with partners and family.</p>
+                        </div>
+                        <div class="pillar-row bg-white p-4 rounded-2xl border border-sanctuary-300 shadow-subtle cursor-pointer"
+                            data-desc="Learn loving assertiveness: express feelings directly and state limits without guilt.">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3"><span
+                                        class="w-6 h-6 rounded-lg bg-sanctuary-100 text-charcoal-600 text-[11px] font-bold flex items-center justify-center">4</span>
+                                    <h4 class="text-xs sm:text-sm font-bold text-charcoal-900">Communication</h4>
+                                </div><i class="fas fa-chevron-right text-xs text-charcoal-400"></i>
+                            </div>
+                            <p class="text-[11px] text-charcoal-600 mt-2 hidden pillar-content">Learn loving
+                                assertiveness: express feelings directly and state limits without guilt.</p>
+                        </div>
+                        <div class="pillar-row bg-white p-4 rounded-2xl border border-sanctuary-300 shadow-subtle cursor-pointer"
+                            data-desc="Rewire your subconscious identity. Build unshakeable confidence and permanent peace of mind.">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3"><span
+                                        class="w-6 h-6 rounded-lg bg-sanctuary-100 text-charcoal-600 text-[11px] font-bold flex items-center justify-center">5</span>
+                                    <h4 class="text-xs sm:text-sm font-bold text-charcoal-900">Self-Transformation</h4>
+                                </div><i class="fas fa-chevron-right text-xs text-charcoal-400"></i>
+                            </div>
+                            <p class="text-[11px] text-charcoal-600 mt-2 hidden pillar-content">Rewire your subconscious
+                                identity. Build unshakeable confidence and permanent peace of mind.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="programs" class="py-20 px-4 sm:px-6 bg-white border-y border-sanctuary-200">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center max-w-3xl mx-auto mb-12 reveal">
+                    <div
+                        class="inline-flex items-center gap-2 text-terracotta text-[10px] uppercase tracking-widest font-semibold mb-2">
+                        <i class="fas fa-compass"></i><span>Offerings & Containers</span>
+                    </div>
+                    <h2 class="font-serif text-3xl sm:text-4xl text-charcoal-900 font-normal">My Coaching Programs</h2>
+                </div>
+
+                <div class="grid lg:grid-cols-3 gap-6 mb-16">
+                    <!-- Group -->
+                    <div
+                        class="bg-sanctuary-50 rounded-3xl p-6 border border-sanctuary-300 flex flex-col justify-between reveal">
+                        <div>
+                            <span
+                                class="text-[9px] uppercase font-bold tracking-wider text-charcoal-600 bg-sanctuary-200 px-3 py-1 rounded-full mb-4 inline-block">Community
+                                Cohort</span>
+                            <h3 class="font-serif text-xl font-normal text-charcoal-900 mb-2">Group Masterclasses</h3>
+                            <div class="space-y-3 mt-4">
+                                <div
+                                    class="p-3 rounded-xl bg-white border border-sanctuary-300 text-xs font-bold text-charcoal-900">
+                                    Self-Love Masterclass</div>
+                                <div
+                                    class="p-3 rounded-xl bg-white border border-sanctuary-300 text-xs font-bold text-charcoal-900">
+                                    Peace of Mind Masterclass</div>
+                                <div
+                                    class="p-3 rounded-xl bg-white border border-sanctuary-300 text-xs font-bold text-charcoal-900">
+                                    Stop People-Pleasing & Say NO</div>
+                            </div>
+                        </div>
+                        <div class="pt-6 mt-6 border-t border-sanctuary-200">
+                            <!-- Correct mapping to pre-select Group Coaching -->
+                            <button
+                                class="open-booking-modal-btn w-full py-3 rounded-xl border border-terracotta text-terracotta hover:bg-terracotta hover:text-white text-xs font-semibold uppercase tracking-wider transition-colors"
+                                data-program="Group Coaching (Masterclasses)">
+                                Inquire About Cohorts
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Couple -->
+                    <div
+                        class="bg-peachmist-50/70 rounded-3xl p-6 border-2 border-terracotta/40 shadow-card flex flex-col justify-between reveal">
+                        <div>
+                            <span
+                                class="text-[9px] uppercase font-bold tracking-wider text-terracotta bg-peachmist-100 px-3 py-1 rounded-full mb-4 inline-block">Relational
+                                Renewal</span>
+                            <h3 class="font-serif text-xl font-normal text-charcoal-900 mb-2">Pre-Marital & Couple</h3>
+                            <div
+                                class="p-4 rounded-xl bg-white border border-terracotta/20 my-4 shadow-subtle text-center">
+                                <p class="font-serif italic text-charcoal-900 text-xs">"Take couples on a journey of
+                                    Creating a New relationship with each other."</p>
+                            </div>
+                            <p class="text-[11px] text-charcoal-700 font-light">Addressing fears before union
+                                (Pre-Marital) or dismantling defensiveness to construct a refreshed relationship
+                                (Couples).</p>
+                        </div>
+                        <div class="pt-6 mt-6 border-t border-peachmist-200">
+                            <!-- Correct mapping to pre-select Couple Coaching -->
+                            <button
+                                class="open-booking-modal-btn w-full py-3 rounded-xl bg-terracotta hover:bg-terracotta-hover text-white text-xs font-semibold uppercase tracking-wider shadow-sm transition-all"
+                                data-program="Couple Coaching">
+                                Book Couple Discovery Call
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 1-on-1 -->
+                    <div
+                        class="bg-sanctuary-50 rounded-3xl p-6 border border-sanctuary-300 flex flex-col justify-between reveal">
+                        <div>
+                            <span
+                                class="text-[9px] uppercase font-bold tracking-wider text-sage bg-sage-light px-3 py-1 rounded-full mb-4 inline-block">Private
+                                Mentorship</span>
+                            <h3 class="font-serif text-xl font-normal text-charcoal-900 mb-2">One-On-One Coaching</h3>
+                            <div class="space-y-3.5 mt-4">
+                                <div class="p-3 rounded-xl bg-white border border-sanctuary-300">
+                                    <h4 class="text-[11px] font-bold text-charcoal-900 uppercase">1) INNER HARMONY (120
+                                        Days)</h4>
+                                </div>
+                                <div class="p-3 rounded-xl bg-peachmist-100/60 border border-peachmist-300/80">
+                                    <h4 class="text-[11px] font-bold text-terracotta uppercase">2) RESET • REINVENT (180
+                                        Days)</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pt-6 mt-6 border-t border-sanctuary-200">
+                            <!-- Correct mapping to pre-select 1-on-1 Inner Harmony -->
+                            <button
+                                class="open-booking-modal-btn w-full py-3 rounded-xl border border-terracotta text-terracotta hover:bg-terracotta hover:text-white text-xs font-semibold uppercase tracking-wider transition-colors"
+                                data-program="1-on-1: Inner Harmony (120 Days)">
+                                Apply for 1-on-1 Mentorship
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VIP Care -->
+                <div class="bg-sanctuary-100 rounded-3xl p-6 sm:p-10 border border-sanctuary-300 reveal">
+                    <div class="mb-6"><span class="text-[10px] uppercase font-bold text-terracotta block mb-1">VIP
+                            Standard of Care</span>
+                        <h3 class="font-serif text-2xl text-charcoal-900">Key Features of One-On-One Coaching:</h3>
+                    </div>
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="bg-white p-4 rounded-2xl border border-sanctuary-300">
+                            <div class="font-bold text-terracotta mb-2">01. Full Support</div>
+                            <p class="text-[10px] text-charcoal-600">On a private WhatsApp group for daily check-ins.
+                            </p>
+                        </div>
+                        <div class="bg-white p-4 rounded-2xl border border-sanctuary-300">
+                            <div class="font-bold text-terracotta mb-2">02. Custom Sessions</div>
+                            <p class="text-[10px] text-charcoal-600">According to your specific outcomes. No rigid
+                                scripts.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-2xl border border-sanctuary-300">
+                            <div class="font-bold text-terracotta mb-2">03. DIY Tools</div>
+                            <p class="text-[10px] text-charcoal-600">Practical reframing protocols for independent use.
+                            </p>
+                        </div>
+                        <div class="bg-white p-4 rounded-2xl border border-sanctuary-300">
+                            <div class="font-bold text-terracotta mb-2">04. Lifetime Access</div>
+                            <p class="text-[10px] text-charcoal-600">To recordings of your coaching sessions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="py-20 px-4 sm:px-6 bg-sanctuary-50/60 border-t border-sanctuary-200">
+            <div class="max-w-7xl mx-auto">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                    <div
+                        class="inline-flex items-center gap-2 text-terracotta text-[10px] sm:text-xs uppercase tracking-widest font-semibold mb-2">
+                        <i class="fas fa-heart text-terracotta"></i>
+                        <span>Heartfelt Transformations</span>
+                    </div>
+                    <h2 class="font-serif text-3xl sm:text-4xl text-charcoal-900 font-normal">
+                        Client Testimonials
+                    </h2>
+                    <p class="text-sm sm:text-base text-charcoal-600 font-light mt-3 max-w-2xl mx-auto">
+                        Real journeys, breakthroughs, and reflections from individuals and couples who reclaimed their self-worth, peace of mind, and relationships.
+                    </p>
+                </div>
+
+                <!-- Part 1: 2 Video Testimonies -->
+                <div class="mb-16">
+                    <div class="flex items-center justify-between mb-8 pb-3 border-b border-sanctuary-200">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-xl bg-peachmist-100 text-terracotta flex items-center justify-center text-xs">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-serif text-xl sm:text-2xl font-normal text-charcoal-900">
+                                    Video Testimonials
+                                </h3>
+                                <p class="text-[11px] sm:text-xs text-charcoal-500 font-light">
+                                    Watch clients share their personal journey in their own words
+                                </p>
+                            </div>
+                        </div>
+                        <span class="text-[10px] uppercase font-bold tracking-wider text-terracotta bg-peachmist-100 px-3 py-1 rounded-full hidden sm:inline-block">
+                            2 Video Stories
+                        </span>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                        
+                        <!-- Video 1: Miss S. Majumdar (Software Engineer) -->
+                        <div class="bg-white rounded-3xl overflow-hidden border border-sanctuary-300 shadow-card hover:shadow-hover-card transition-all duration-300 flex flex-col justify-between reveal group">
+                            <div class="relative bg-charcoal-950 aspect-video overflow-hidden">
+                                <iframe src="https://drive.google.com/file/d/18p9dK61dX6Pnc2JDqoU-588XE7OYp7dV/preview"
+                                    class="w-full h-full border-0" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+                                <div class="absolute top-3 left-3 pointer-events-none bg-charcoal-900/85 backdrop-blur text-white text-[9px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded-full">
+                                    <i class="fas fa-play text-terracotta mr-1"></i> Video Testimony
+                                </div>
+                            </div>
+                            <div class="p-6 flex-1 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-[10px] uppercase font-bold tracking-wider text-terracotta bg-peachmist-100 px-2.5 py-0.5 rounded-full inline-block">
+                                            Software Engineer
+                                        </span>
+                                        <span class="text-[10px] text-charcoal-400 font-medium">
+                                            <i class="fas fa-check-circle text-sage mr-1"></i> Verified Client
+                                        </span>
+                                    </div>
+                                    <h4 class="font-serif text-lg font-semibold text-charcoal-900 group-hover:text-terracotta transition-colors">
+                                        Miss S. Majumdar
+                                    </h4>
+                                    <p class="text-xs text-charcoal-600 font-light mt-2 leading-relaxed">
+                                        Overcoming high-pressure career anxiety, overthinking, and rediscovering self-respect and emotional clarity through 1-on-1 coaching with Dr. Abida.
+                                    </p>
+                                </div>
+                                <div class="pt-4 mt-5 border-t border-sanctuary-200 flex items-center justify-between">
+                                    <div class="flex items-center gap-2.5">
+                                        <div class="w-8 h-8 rounded-full bg-peachmist-100 text-terracotta flex items-center justify-center text-xs font-serif font-bold">
+                                            SM
+                                        </div>
+                                        <div>
+                                            <span class="text-xs font-bold text-charcoal-800 block">Miss S. Majumdar</span>
+                                            <span class="text-[10px] text-charcoal-500">Software Engineer</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <button class="video-card-trigger text-xs font-semibold text-terracotta hover:text-terracotta-hover inline-flex items-center gap-1.5 transition-colors"
+                                            data-drive="https://drive.google.com/file/d/18p9dK61dX6Pnc2JDqoU-588XE7OYp7dV/preview"
+                                            data-title="Miss S. Majumdar (Software Engineer)"
+                                            data-text="Hear Miss S. Majumdar discuss how coaching freed her from deep overthinking and self-criticism, restoring self-love, peace, and resilience in her career.">
+                                            <span>Full Screen</span>
+                                            <i class="fas fa-expand-alt text-[10px]"></i>
+                                        </button>
+                                        <a href="https://drive.google.com/file/d/18p9dK61dX6Pnc2JDqoU-588XE7OYp7dV/view?usp=drive_link" target="_blank"
+                                            class="text-xs text-charcoal-400 hover:text-terracotta transition-colors" title="Open in Google Drive">
+                                            <i class="fab fa-google-drive"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video 2: Divya Wadhwani -->
+                        <div class="bg-white rounded-3xl overflow-hidden border border-sanctuary-300 shadow-card hover:shadow-hover-card transition-all duration-300 flex flex-col justify-between reveal group">
+                            <div class="relative bg-charcoal-950 aspect-video overflow-hidden">
+                                <iframe src="https://drive.google.com/file/d/1EPP5rWfmwykIXiPfG-2kP40bQ9-yEARW/preview"
+                                    class="w-full h-full border-0" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+                                <div class="absolute top-3 left-3 pointer-events-none bg-charcoal-900/85 backdrop-blur text-white text-[9px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded-full">
+                                    <i class="fas fa-play text-terracotta mr-1"></i> Video Testimony
+                                </div>
+                            </div>
+                            <div class="p-6 flex-1 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-[10px] uppercase font-bold tracking-wider text-sage bg-sage-light px-2.5 py-0.5 rounded-full inline-block">
+                                            Personal Transformation
+                                        </span>
+                                        <span class="text-[10px] text-charcoal-400 font-medium">
+                                            <i class="fas fa-check-circle text-sage mr-1"></i> Verified Client
+                                        </span>
+                                    </div>
+                                    <h4 class="font-serif text-lg font-semibold text-charcoal-900 group-hover:text-terracotta transition-colors">
+                                        Divya Wadhwani
+                                    </h4>
+                                    <p class="text-xs text-charcoal-600 font-light mt-2 leading-relaxed">
+                                        Divya shares her deep emotional breakthrough, learning to step out of mental exhaustion and step into a grounded, joyful, and confident life.
+                                    </p>
+                                </div>
+                                <div class="pt-4 mt-5 border-t border-sanctuary-200 flex items-center justify-between">
+                                    <div class="flex items-center gap-2.5">
+                                        <div class="w-8 h-8 rounded-full bg-sage-light text-sage flex items-center justify-center text-xs font-serif font-bold">
+                                            DW
+                                        </div>
+                                        <div>
+                                            <span class="text-xs font-bold text-charcoal-800 block">Divya Wadhwani</span>
+                                            <span class="text-[10px] text-charcoal-500">Mentorship Client</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <button class="video-card-trigger text-xs font-semibold text-terracotta hover:text-terracotta-hover inline-flex items-center gap-1.5 transition-colors"
+                                            data-drive="https://drive.google.com/file/d/1EPP5rWfmwykIXiPfG-2kP40bQ9-yEARW/preview"
+                                            data-title="Divya Wadhwani"
+                                            data-text="Divya shares her personal breakthrough with Dr. Abida Nadaf, navigating difficult emotions and finding enduring inner harmony.">
+                                            <span>Full Screen</span>
+                                            <i class="fas fa-expand-alt text-[10px]"></i>
+                                        </button>
+                                        <a href="https://drive.google.com/file/d/1EPP5rWfmwykIXiPfG-2kP40bQ9-yEARW/view?usp=drive_link" target="_blank"
+                                            class="text-xs text-charcoal-400 hover:text-terracotta transition-colors" title="Open in Google Drive">
+                                            <i class="fab fa-google-drive"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Part 2: Written Client Testimonials -->
+                <div>
+                    <div class="flex items-center justify-between mb-8 pb-3 border-b border-sanctuary-200">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-xl bg-peachmist-100 text-terracotta flex items-center justify-center text-xs">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-serif text-xl sm:text-2xl font-normal text-charcoal-900">
+                                    Client Words & Letters
+                                </h3>
+                                <p class="text-[11px] sm:text-xs text-charcoal-500 font-light">
+                                    Unfiltered messages of healing, self-discovery, and gratitude
+                                </p>
+                            </div>
+                        </div>
+                        <span class="text-[10px] uppercase font-bold tracking-wider text-terracotta bg-peachmist-100 px-3 py-1 rounded-full hidden sm:inline-block">
+                            Verified Client Reviews
+                        </span>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
+                        
+                        <!-- Testimonial 1: Mrs S Mohan -->
+                        <div class="bg-white p-6 sm:p-7 rounded-3xl border border-sanctuary-300 shadow-card hover:shadow-hover-card transition-all duration-300 flex flex-col justify-between reveal group">
+                            <div>
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="text-amber-400 text-xs flex gap-1">
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="text-[9px] uppercase font-bold tracking-wider text-terracotta bg-peachmist-100 px-2.5 py-0.5 rounded-full">
+                                        Private Mentorship
+                                    </span>
+                                </div>
+                                <blockquote class="font-serif italic text-charcoal-800 text-xs sm:text-[13px] leading-relaxed mb-6">
+                                    "Abida has been a truly nurturing light, offering a safe, warm space where every one of my worries was met with deep and compassionate listening. Her incredible empathy and emotional intelligence helped turn even the most overwhelming moments into clear paths of self-discovery and growth. I deeply appreciate how she balanced these overwhelming moments with a soulful reminder to always be kind to myself along the way. Through her guidance, I've gained a toolkit of mindful practices that now feel like a quiet, constant strength in my daily life. More than just a coach, her authentic presence made this entire journey feel like walking toward a much brighter, more balanced version of myself."
+                                </blockquote>
+                            </div>
+                            <div class="pt-4 border-t border-sanctuary-200 flex items-center justify-between">
+                                <div>
+                                    <h4 class="font-bold text-charcoal-900 text-xs sm:text-sm">Mrs. S. Mohan</h4>
+                                    <span class="text-[10px] text-charcoal-500 block">Mentorship Client</span>
+                                </div>
+                                <div class="w-8 h-8 rounded-full bg-peachmist-100 text-terracotta flex items-center justify-center text-xs font-serif font-bold">
+                                    SM
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 2: Miss S Majumdar -->
+                        <div class="bg-white p-6 sm:p-7 rounded-3xl border border-sanctuary-300 shadow-card hover:shadow-hover-card transition-all duration-300 flex flex-col justify-between reveal group">
+                            <div>
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="text-amber-400 text-xs flex gap-1">
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="text-[9px] uppercase font-bold tracking-wider text-sage bg-sage-light px-2.5 py-0.5 rounded-full">
+                                        Self-Love & Anxiety
+                                    </span>
+                                </div>
+                                <blockquote class="font-serif italic text-charcoal-800 text-xs sm:text-[13px] leading-relaxed mb-6">
+                                    "I was living in so much of discomfort and self hatred. Ever since I have started working with Abida she has helped me regain my self-love and self-respect. She has made things easier for me to understand. Now I am out of the overthinking and anxiety and focus on growth. Abida is a great listener, teacher and a great friend. She listens with patience and tries to teach. She takes her work more seriously than we take our emotional health."
+                                </blockquote>
+                            </div>
+                            <div class="pt-4 border-t border-sanctuary-200 flex items-center justify-between">
+                                <div>
+                                    <h4 class="font-bold text-charcoal-900 text-xs sm:text-sm">Miss S. Majumdar</h4>
+                                    <span class="text-[10px] text-charcoal-500 block">Coaching Client</span>
+                                </div>
+                                <div class="w-8 h-8 rounded-full bg-peachmist-100 text-terracotta flex items-center justify-center text-xs font-serif font-bold">
+                                    SM
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 3: Mrs Priyanka -->
+                        <div class="bg-white p-6 sm:p-7 rounded-3xl border border-sanctuary-300 shadow-card hover:shadow-hover-card transition-all duration-300 flex flex-col justify-between reveal group">
+                            <div>
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="text-amber-400 text-xs flex gap-1">
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="text-[9px] uppercase font-bold tracking-wider text-terracotta bg-peachmist-100 px-2.5 py-0.5 rounded-full">
+                                        Transformation
+                                    </span>
+                                </div>
+                                <blockquote class="font-serif italic text-charcoal-800 text-xs sm:text-[13px] leading-relaxed mb-6">
+                                    "I am a big fan of you Abida ji, as I say you are a God sent angel in my life. The tools and learnings added so much value to the situations I am facing or have faced in my life. All the explanations and examples were offered with so much clarity, indeed helped me understand the concepts better. I would love to copy you someday and become the best coach just like you one day, I have a long way to go :)"
+                                </blockquote>
+                            </div>
+                            <div class="pt-4 border-t border-sanctuary-200 flex items-center justify-between">
+                                <div>
+                                    <h4 class="font-bold text-charcoal-900 text-xs sm:text-sm">Mrs. Priyanka</h4>
+                                    <span class="text-[10px] text-charcoal-500 block">Life Coaching Client</span>
+                                </div>
+                                <div class="w-8 h-8 rounded-full bg-peachmist-100 text-terracotta flex items-center justify-center text-xs font-serif font-bold">
+                                    P
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 4: Surbhi -->
+                        <div class="bg-white p-6 sm:p-7 rounded-3xl border border-sanctuary-300 shadow-card hover:shadow-hover-card transition-all duration-300 flex flex-col justify-between reveal group">
+                            <div>
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="text-amber-400 text-xs flex gap-1">
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="text-[9px] uppercase font-bold tracking-wider text-terracotta bg-peachmist-100 px-2.5 py-0.5 rounded-full">
+                                        Mindset & Motherhood
+                                    </span>
+                                </div>
+                                <blockquote class="font-serif italic text-charcoal-800 text-xs sm:text-[13px] leading-relaxed mb-6">
+                                    "Dear Abida, Talking to you always helps me get back on track. As you know, I recently became a mom again, but this time I am not falling into the trap of self-criticism or feeling like a victim. I finally broke my perfectionist mindset. When I struggled with the JPMR technique, you told me, <span class='not-italic font-semibold text-terracotta'>'Who asked you to do it perfectly? Just do it.'</span> That single line is still helping me today. I overcame my limiting beliefs and feel so good about myself. I am truly grateful for my decision to invest in your mentorship."
+                                </blockquote>
+                            </div>
+                            <div class="pt-4 border-t border-sanctuary-200 flex items-center justify-between">
+                                <div>
+                                    <h4 class="font-bold text-charcoal-900 text-xs sm:text-sm">Surbhi</h4>
+                                    <span class="text-[10px] text-charcoal-500 block">Mentorship Client</span>
+                                </div>
+                                <div class="w-8 h-8 rounded-full bg-peachmist-100 text-terracotta flex items-center justify-center text-xs font-serif font-bold">
+                                    S
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 5: Client Q&A Program Review -->
+                        <div class="bg-white p-6 sm:p-7 rounded-3xl border border-sanctuary-300 shadow-card hover:shadow-hover-card transition-all duration-300 flex flex-col justify-between reveal group md:col-span-2 lg:col-span-2">
+                            <div>
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="text-amber-400 text-xs flex gap-1">
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="text-[9px] uppercase font-bold tracking-wider text-terracotta bg-peachmist-100 px-2.5 py-0.5 rounded-full">
+                                        Program Feedback
+                                    </span>
+                                </div>
+                                <div class="space-y-4">
+                                    <div class="p-4 rounded-2xl bg-sanctuary-50 border border-sanctuary-200">
+                                        <p class="text-[11px] font-bold text-charcoal-500 uppercase tracking-wider mb-1">
+                                            Which part of the program was most helpful for you?
+                                        </p>
+                                        <p class="font-serif italic text-charcoal-900 text-xs sm:text-[13px] leading-relaxed">
+                                            "The part that helped me the most was understanding my triggers and learning how to handle them calmly. It made a big difference in my relationships and career."
+                                        </p>
+                                    </div>
+                                    <div class="p-4 rounded-2xl bg-peachmist-50/70 border border-peachmist-200">
+                                        <p class="text-[11px] font-bold text-terracotta uppercase tracking-wider mb-1">
+                                            What qualities of Abida as a coach did you appreciate the most?
+                                        </p>
+                                        <p class="font-serif italic text-charcoal-900 text-xs sm:text-[13px] leading-relaxed">
+                                            "What I loved most about Abida was how she made me feel seen and understood. Her warmth and insight helped me open up and truly work on myself without fear."
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pt-4 mt-6 border-t border-sanctuary-200 flex items-center justify-between">
+                                <div>
+                                    <h4 class="font-bold text-charcoal-900 text-xs sm:text-sm">1-on-1 Coaching Graduate</h4>
+                                    <span class="text-[10px] text-charcoal-500 block">Verified Program Review</span>
+                                </div>
+                                <div class="w-8 h-8 rounded-full bg-peachmist-100 text-terracotta flex items-center justify-center text-xs">
+                                    <i class="fas fa-check-double"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="book-call" class="py-16 sm:py-20 px-4 sm:px-6 bg-peachmist-100/50 border-t border-sanctuary-200">
+            <div
+                class="max-w-4xl mx-auto bg-white rounded-3xl border border-sanctuary-300 shadow-card overflow-hidden reveal p-8 text-center">
+                <span class="text-[10px] uppercase tracking-widest font-bold text-terracotta block mb-2">Direct
+                    Connection</span>
+                <h3 class="font-serif text-3xl font-normal text-charcoal-900">Ready to reclaim your peace?</h3>
+                <p class="text-xs text-charcoal-500 mt-2 max-w-lg mx-auto">Fill out the form below to instantly generate
+                    a booking request sent directly to Dr. Abida's executive WhatsApp line.</p>
+                <button
+                    class="open-booking-modal-btn max-w-sm w-full mx-auto mt-6 py-4 rounded-full bg-terracotta hover:bg-terracotta-hover text-white text-xs font-semibold uppercase tracking-wider transition-colors shadow-lg flex items-center justify-center gap-2"
+                    data-program="General Clarity Call">
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    Start Booking Process
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-charcoal-900 text-sanctuary-300 pt-16 pb-8 px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto flex flex-col items-center text-center">
+            <div
+                class="w-10 h-10 rounded-full bg-terracotta text-white font-serif font-bold flex items-center justify-center text-sm mb-4">
+                AN</div>
+            <h2 class="font-serif text-xl font-medium text-white mb-2">Dr. Abida Nadaf</h2>
+            <p class="text-[11px] text-sanctuary-400 font-light max-w-sm mb-6">Emotional Wellness & Relationships Coach
+            </p>
+            <div class="flex gap-3 mb-6">
+                <a href="https://wa.me/919478882125?text=Hello%20Dr.%20Abida" target="_blank"
+                    class="w-9 h-9 rounded-full bg-emerald-700 hover:bg-emerald-600 text-white flex items-center justify-center text-xs"
+                    title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://instagram.com"
+                    class="w-9 h-9 rounded-full bg-charcoal-800 text-sanctuary-200 flex items-center justify-center text-xs"
+                    title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://share.google/U1Wk7knLl6Qu7Nz9q" target="_blank"
+                    class="w-9 h-9 rounded-full bg-blue-600 hover:bg-blue-500 text-white flex items-center justify-center text-xs"
+                    title="Google Business Profile"><i class="fab fa-google"></i></a>
+            </div>
+            <p class="text-[10px] text-sanctuary-500 font-light">© <span id="year-label"></span> Dr. Abida Nadaf. All
+                Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Video Modal -->
+    <div id="video-modal"
+        class="fixed inset-0 z-50 bg-charcoal-900/85 backdrop-blur-md hidden items-center justify-center p-4">
+        <div
+            class="bg-charcoal-950 max-w-3xl w-full rounded-3xl overflow-hidden shadow-2xl border border-sanctuary-300/30 relative">
+            <button id="close-video-modal"
+                class="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-charcoal-900/90 text-white flex items-center justify-center hover:bg-terracotta transition-colors text-xs border border-white/20 shadow-lg">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="aspect-video bg-black relative flex items-center justify-center">
+                <iframe id="video-modal-iframe" class="w-full h-full border-0 hidden" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                <video id="video-modal-player" controls playsinline class="w-full h-full object-contain hidden">
+                    <source src="" type="video/mp4">
+                    Your browser does not support video playback.
+                </video>
+            </div>
+            <div class="p-5 sm:p-6 bg-charcoal-900 border-t border-white/10 text-white">
+                <div class="flex items-center gap-2 mb-1.5">
+                    <span class="text-[10px] uppercase font-bold tracking-wider text-peachmist-300 bg-white/10 px-2.5 py-0.5 rounded-full">Client Testimony Video</span>
+                </div>
+                <h4 class="font-serif text-lg sm:text-2xl font-normal text-white" id="video-modal-title"></h4>
+                <p class="text-xs text-sanctuary-200 font-light leading-relaxed mt-2" id="video-modal-text"></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="booking-modal"
+        class="fixed inset-0 z-50 bg-charcoal-900/80 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div
+            class="bg-white max-w-md w-full max-h-[95vh] overflow-y-auto rounded-3xl p-6 sm:p-8 border border-sanctuary-300 shadow-2xl relative scroll-smooth">
+            <button id="close-booking-modal"
+                class="absolute top-4 right-4 sm:top-5 sm:right-5 w-8 h-8 rounded-full bg-sanctuary-100 text-charcoal-600 hover:bg-terracotta hover:text-white flex items-center justify-center transition-colors text-xs z-10">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="mb-5 text-left mt-2">
+                <span class="text-[10px] uppercase tracking-wider font-bold text-terracotta block mb-1">Calendar
+                    Reservation</span>
+                <h3 class="font-serif text-2xl font-normal text-charcoal-900">Request Clarity Call</h3>
+                <p class="text-[11px] text-charcoal-500 mt-1 font-light">We will format your details and route you
+                    directly to WhatsApp.</p>
+            </div>
+
+            <!-- SMART PRE-FILLED FORM -->
+            <form id="clarity-request-form" class="space-y-4 text-left pb-2">
+                <div>
+                    <label class="block text-xs font-semibold text-charcoal-800 mb-1.5">Full Name</label>
+                    <input type="text" id="client-name" required placeholder="e.g. Priya Sharma"
+                        class="w-full px-4 py-3 rounded-xl border border-sanctuary-300 bg-sanctuary-50 text-sm focus:outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta/30 transition-all">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-charcoal-800 mb-1.5">WhatsApp Number</label>
+                        <input type="tel" id="client-phone" required placeholder="+91 98765 43210"
+                            class="w-full px-4 py-3 rounded-xl border border-sanctuary-300 bg-sanctuary-50 text-sm focus:outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta/30 transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-charcoal-800 mb-1.5">Language</label>
+                        <select id="client-lang"
+                            class="w-full px-4 py-3 rounded-xl border border-sanctuary-300 bg-sanctuary-50 text-sm focus:outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta/30 transition-all">
+                            <option value="English">English</option>
+                            <option value="Hindi">Hindi (हिंदी)</option>
+                            <option value="Marathi">Marathi (मराठी)</option>
+                            <option value="Punjabi">Punjabi (ਪੰਜਾਬੀ)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-charcoal-800 mb-1.5">Program of Interest</label>
+                    <select id="client-program"
+                        class="w-full px-4 py-3 rounded-xl border border-sanctuary-300 bg-sanctuary-50 text-sm focus:outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta/30 transition-all">
+                        <!-- Comprehensive mapping matching data-program attributes -->
+                        <option value="General Clarity Call">General Clarity Call</option>
+                        <option value="Women's Coaching">Women's Coaching</option>
+                        <option value="Couple Coaching">Couple Coaching</option>
+                        <option value="Pre-Marital Coaching (Women)">Pre-Marital Coaching (Women)</option>
+                        <option value="Student Mentorship">Student Mentorship</option>
+                        <option value="Group Coaching (Masterclasses)">Group Coaching (Masterclasses)</option>
+                        <option value="1-on-1: Inner Harmony (120 Days)">1-on-1: Inner Harmony (120 Days)</option>
+                        <option value="1-on-1: Reset-Reinvent-Transform (180 Days)">1-on-1: Reset-Reinvent-Transform
+                            (180 Days)</option>
+                    </select>
+                </div>
+
+                <button type="submit"
+                    class="w-full py-3.5 sm:py-4 rounded-xl bg-terracotta hover:bg-terracotta-hover text-white text-xs font-bold uppercase tracking-wider transition-colors shadow-md mt-4 flex justify-center items-center gap-2">
+                    <i class="fab fa-whatsapp text-sm"></i>
+                    Proceed to WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Set dynamic year
+        document.getElementById('year-label').textContent = new Date().getFullYear();
+
+        // Progress Bar
+        window.addEventListener('scroll', () => {
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (window.scrollY / docHeight) * 100;
+            document.getElementById('progress-bar').style.width = progress + '%';
+        });
+
+        // Interactive Hero Persona Selector - Hover Color Fix
+        const personaTabs = document.querySelectorAll('.persona-tab');
+        const personaHeading = document.getElementById('persona-heading');
+        const personaDescription = document.getElementById('persona-description');
+        const personaIcon = document.getElementById('persona-icon');
+
+        const personaData = {
+            woman: { heading: "For Women Feeling Drained & Over-Giving", desc: "Learn to say 'NO' with love, dismantle chronic people-pleasing, and build loving boundaries.", iconClass: "fa-heart" },
+            couple: { heading: "For Couples in Circular Arguments", desc: "Step off the defensive battlefield. We guide couples through 'Creating a New Relationship'.", iconClass: "fa-people-arrows" },
+            student: { heading: "For Students Facing Exam Pressure", desc: "Quiet the racing mind, dissolve academic paralysis, and master practical DIY grounding tools.", iconClass: "fa-graduation-cap" }
+        };
+
+        const activeClasses = ['border-terracotta', 'bg-terracotta', 'text-white', 'shadow-md', 'hover:bg-terracotta-hover'];
+        const inactiveClasses = ['border-sanctuary-300', 'bg-sanctuary-50', 'text-charcoal-700', 'hover:bg-peachmist-100', 'hover:text-terracotta', 'hover:border-peachmist-300'];
+
+        personaTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                personaTabs.forEach(t => {
+                    t.classList.remove(...activeClasses);
+                    t.classList.add(...inactiveClasses);
+                });
+                tab.classList.remove(...inactiveClasses);
+                tab.classList.add(...activeClasses);
+
+                const key = tab.dataset.persona;
+                const data = personaData[key];
+                personaHeading.textContent = data.heading;
+                personaDescription.textContent = data.desc;
+                personaIcon.className = `fas ${data.iconClass} text-xs`;
+            });
+        });
+
+        // Interactive 5 Pillars Accordion
+        const pillarRows = document.querySelectorAll('.pillar-row');
+        const activePillarDetail = document.getElementById('active-pillar-detail');
+
+        pillarRows.forEach(row => {
+            row.addEventListener('click', () => {
+                pillarRows.forEach(r => {
+                    r.classList.remove('active', 'border-terracotta');
+                    r.classList.add('border-sanctuary-300');
+                    r.querySelector('.pillar-content').classList.add('hidden');
+                    r.querySelector('.fa-chevron-right').classList.remove('rotate-90', 'text-terracotta');
+                    r.querySelector('.fa-chevron-right').classList.add('text-charcoal-400');
+                });
+                row.classList.add('active', 'border-terracotta');
+                row.classList.remove('border-sanctuary-300');
+                row.querySelector('.pillar-content').classList.remove('hidden');
+                row.querySelector('.fa-chevron-right').classList.add('rotate-90', 'text-terracotta');
+                row.querySelector('.fa-chevron-right').classList.remove('text-charcoal-400');
+
+                if (activePillarDetail) activePillarDetail.textContent = row.dataset.desc;
+            });
+        });
+
+        // ==========================================
+        // SMART FORM PRE-SELECTION & WHATSAPP ROUTING
+        // ==========================================
+        const bookingModal = document.getElementById('booking-modal');
+        const openBookingBtns = document.querySelectorAll('.open-booking-modal-btn');
+        const closeBookingModal = document.getElementById('close-booking-modal');
+        const clarityForm = document.getElementById('clarity-request-form');
+        const programSelect = document.getElementById('client-program');
+
+        // Opening Modal logic with Data passing
+        openBookingBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                // Read the program tied to the clicked button
+                const targetProgram = btn.getAttribute('data-program');
+
+                // If the button has a specific program, automatically select it in the dropdown
+                if (targetProgram) {
+                    programSelect.value = targetProgram;
+                } else {
+                    programSelect.value = "General Clarity Call"; // Fallback
+                }
+
+                bookingModal.classList.remove('hidden');
+                bookingModal.classList.add('flex');
+            });
+        });
+
+        closeBookingModal.addEventListener('click', () => {
+            bookingModal.classList.add('hidden');
+            bookingModal.classList.remove('flex');
+        });
+
+        bookingModal.addEventListener('click', (e) => {
+            if (e.target === bookingModal) {
+                bookingModal.classList.add('hidden');
+                bookingModal.classList.remove('flex');
+            }
+        });
+
+        // Formatting WhatsApp Request and redirecting to specific number
+        clarityForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('client-name').value.trim();
+            const phone = document.getElementById('client-phone').value.trim();
+            const lang = document.getElementById('client-lang').value;
+            const program = document.getElementById('client-program').value;
+
+            // WhatsApp Markdown used here (* for bold)
+            const message = `Hello Dr. Abida Nadaf, I would like to book a Clarity Call. Here are my details:\n\n*Name:* ${name}\n*WhatsApp Number:* ${phone}\n*Preferred Language:* ${lang}\n*Program of Interest:* ${program}\n\nPlease let me know the next steps!`;
+
+            const encodedMessage = encodeURIComponent(message);
+
+            // EXACT NUMBER INTEGRATION (+91 94788 82125 formatted without spaces/plus)
+            const targetPhoneNumber = "919478882125";
+            const whatsappUrl = `https://wa.me/${targetPhoneNumber}?text=${encodedMessage}`;
+
+            bookingModal.classList.add('hidden');
+            bookingModal.classList.remove('flex');
+
+            try {
+                confetti({
+                    particleCount: 80,
+                    spread: 70,
+                    origin: { y: 0.6 },
+                    colors: ['#BA5333', '#F9C9B0', '#627A62']
+                });
+            } catch (err) { }
+
+            window.open(whatsappUrl, '_blank');
+            clarityForm.reset();
+        });
+
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('flex');
+                menuIcon.classList.replace('fa-bars', 'fa-times');
+            } else {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+                menuIcon.classList.replace('fa-times', 'fa-bars');
+            }
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+                menuIcon.classList.replace('fa-times', 'fa-bars');
+            });
+        });
+
+        // Scroll Reveal Observer
+        const reveals = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('active'); }
+            });
+        }, { threshold: 0.1 });
+        reveals.forEach(el => revealObserver.observe(el));
+
+        // Video Modal Logic
+        const videoModal = document.getElementById('video-modal');
+        const closeVideoModal = document.getElementById('close-video-modal');
+        const videoModalPlayer = document.getElementById('video-modal-player');
+        const videoModalIframe = document.getElementById('video-modal-iframe');
+        const videoTriggers = document.querySelectorAll('.video-card-trigger');
+
+        videoTriggers.forEach(vt => {
+            vt.addEventListener('click', () => {
+                const driveUrl = vt.dataset.drive;
+                const videoSrc = vt.dataset.video;
+                document.getElementById('video-modal-title').textContent = vt.dataset.title;
+                document.getElementById('video-modal-text').textContent = `"${vt.dataset.text}"`;
+
+                if (driveUrl) {
+                    if (videoModalPlayer) {
+                        videoModalPlayer.pause();
+                        videoModalPlayer.classList.add('hidden');
+                    }
+                    if (videoModalIframe) {
+                        videoModalIframe.src = driveUrl;
+                        videoModalIframe.classList.remove('hidden');
+                    }
+                } else if (videoSrc && videoModalPlayer) {
+                    if (videoModalIframe) {
+                        videoModalIframe.src = '';
+                        videoModalIframe.classList.add('hidden');
+                    }
+                    videoModalPlayer.src = videoSrc;
+                    videoModalPlayer.classList.remove('hidden');
+                    videoModalPlayer.load();
+                    videoModalPlayer.play().catch(() => {});
+                }
+
+                videoModal.classList.remove('hidden');
+                videoModal.classList.add('flex');
+            });
+        });
+
+        const hideVideoModal = () => {
+            if (videoModalIframe) {
+                videoModalIframe.src = '';
+                videoModalIframe.classList.add('hidden');
+            }
+            if (videoModalPlayer) {
+                videoModalPlayer.pause();
+                videoModalPlayer.currentTime = 0;
+                videoModalPlayer.src = '';
+                videoModalPlayer.classList.add('hidden');
+            }
+            videoModal.classList.add('hidden');
+            videoModal.classList.remove('flex');
+        };
+
+        closeVideoModal.addEventListener('click', hideVideoModal);
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) {
+                hideVideoModal();
+            }
+        });
+    </script>
+</body>
+
+</html>
