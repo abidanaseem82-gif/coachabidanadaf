@@ -275,24 +275,24 @@
                             Tell me what brings you here today:
                         </span>
 
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 mb-4" id="persona-selector">
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3.5 mb-4" id="persona-selector">
                             <button
-                                class="persona-tab w-full py-2.5 px-3 rounded-xl border transition-all flex items-center justify-center gap-1.5 border-terracotta bg-terracotta text-white shadow-md hover:bg-terracotta-hover"
+                                class="persona-tab w-full py-3 px-3.5 rounded-xl border-2 transition-all duration-200 flex items-center justify-center gap-2 border-terracotta bg-terracotta text-white shadow-md hover:bg-terracotta-hover scale-[1.02] cursor-pointer"
                                 data-persona="woman">
-                                <i class="fas fa-heart text-xs"></i>
-                                <span class="text-xs font-semibold">I'm a Woman</span>
+                                <i class="fas fa-heart text-sm"></i>
+                                <span class="text-xs sm:text-sm font-bold tracking-wide">I'm a Woman</span>
                             </button>
                             <button
-                                class="persona-tab w-full py-2.5 px-3 rounded-xl border transition-all flex items-center justify-center gap-1.5 border-sanctuary-300 bg-sanctuary-50 text-charcoal-700 hover:bg-peachmist-100 hover:text-terracotta hover:border-peachmist-300"
+                                class="persona-tab w-full py-3 px-3.5 rounded-xl border-2 transition-all duration-200 flex items-center justify-center gap-2 border-sanctuary-300 bg-white text-charcoal-900 shadow-sm hover:bg-peachmist-50 hover:text-terracotta hover:border-terracotta/60 cursor-pointer"
                                 data-persona="couple">
-                                <i class="fas fa-people-arrows text-xs"></i>
-                                <span class="text-xs font-semibold">In a Relationship</span>
+                                <i class="fas fa-people-arrows text-sm"></i>
+                                <span class="text-xs sm:text-sm font-bold tracking-wide">Couple</span>
                             </button>
                             <button
-                                class="persona-tab w-full py-2.5 px-3 rounded-xl border transition-all flex items-center justify-center gap-1.5 border-sanctuary-300 bg-sanctuary-50 text-charcoal-700 hover:bg-peachmist-100 hover:text-terracotta hover:border-peachmist-300"
+                                class="persona-tab w-full py-3 px-3.5 rounded-xl border-2 transition-all duration-200 flex items-center justify-center gap-2 border-sanctuary-300 bg-white text-charcoal-900 shadow-sm hover:bg-peachmist-50 hover:text-terracotta hover:border-terracotta/60 cursor-pointer"
                                 data-persona="student">
-                                <i class="fas fa-graduation-cap text-xs"></i>
-                                <span class="text-xs font-semibold">I'm a Student</span>
+                                <i class="fas fa-graduation-cap text-sm"></i>
+                                <span class="text-xs sm:text-sm font-bold tracking-wide">I'm a Student</span>
                             </button>
                         </div>
 
@@ -2271,8 +2271,8 @@
             student: { heading: "For Students Facing Exam Pressure", desc: "Quiet the racing mind, dissolve academic paralysis, and master practical DIY grounding tools.", iconClass: "fa-graduation-cap" }
         };
 
-        const activeClasses = ['border-terracotta', 'bg-terracotta', 'text-white', 'shadow-md', 'hover:bg-terracotta-hover'];
-        const inactiveClasses = ['border-sanctuary-300', 'bg-sanctuary-50', 'text-charcoal-700', 'hover:bg-peachmist-100', 'hover:text-terracotta', 'hover:border-peachmist-300'];
+        const activeClasses = ['border-terracotta', 'bg-terracotta', 'text-white', 'shadow-md', 'hover:bg-terracotta-hover', 'scale-[1.02]'];
+        const inactiveClasses = ['border-sanctuary-300', 'bg-white', 'text-charcoal-900', 'shadow-sm', 'hover:bg-peachmist-50', 'hover:text-terracotta', 'hover:border-terracotta/60'];
 
         personaTabs.forEach(tab => {
             tab.addEventListener('click', () => {
